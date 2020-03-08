@@ -15,16 +15,20 @@ namespace :stat do
     last_updated = block.at('sup:contains("as of")').text.gsub("as of ", "")
 
     state = State.find_by_slug("florida")
-    state.stats.create(
-      positive_residents: florida_residents.to_i,
-      cases_repatriated: cases_repatriated.to_i,
-      non_residents: non_residents.to_i,
-      deaths: florida_deaths.to_i,
-      results_negative: negative_tests.to_i,
-      results_pending: pending_tests.to_i,
-      being_monitored: being_monitored.to_i,
-      total_monitored: total_monitored.to_i,
-      last_update: last_updated
-    )
+    last_stat = state.stats.last
+
+    unless last_stat.last_update != last_updated
+      state.stats.create(
+        positive_residents: florida_residents.to_i,
+        cases_repatriated: cases_repatriated.to_i,
+        non_residents: non_residents.to_i,
+        deaths: florida_deaths.to_i,
+        results_negative: negative_tests.to_i,
+        results_pending: pending_tests.to_i,
+        being_monitored: being_monitored.to_i,
+        total_monitored: total_monitored.to_i,
+        last_update: last_updated
+      )
+    end
   end
 end
