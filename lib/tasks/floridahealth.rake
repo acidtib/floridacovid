@@ -17,7 +17,7 @@ namespace :stat do
     state = State.find_by_slug("florida")
     last_stat = state.stats.last
 
-    unless last_stat.last_update != last_updated
+    if last_stat.last_update != last_updated
       state.stats.create(
         positive_residents: florida_residents.to_i,
         cases_repatriated: cases_repatriated.to_i,

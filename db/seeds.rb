@@ -12,5 +12,5 @@ state.stats.create(
   results_pending: 88,
   being_monitored: 278,
   total_monitored: 1010,
-  last_update: "9:40 p.m. ET 3/7/2020"
+  last_update: "9:40 p.m. ET 3/6/2020"
 )
