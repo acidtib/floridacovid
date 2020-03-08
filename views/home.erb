@@ -1,0 +1,114 @@
+<div class="row">
+  <div class="col-12 mt-5">
+    <h1>Positive Cases of COVID-19</h1>
+    
+    <div class="card-deck mb-3 mt-3 text-center">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Residents</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title"><%= @stats.positive_residents %></h1>
+        </div>
+      </div>
+
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Cases Repatriated</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title"><%= @stats.cases_repatriated %></h1>
+        </div>
+      </div>
+
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Non Resident</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title"><%= @stats.non_residents %></h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12">
+    <h1>Deaths</h1>
+
+    <div class="card-deck mb-3 mt-3 text-center">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Residents</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title"><%= @stats.deaths %></h1>
+        </div>
+      </div>
+
+      <div class="card mb-4 stat-card">
+      </div>
+
+      <div class="card mb-4 stat-card">
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12">
+    <h1>Test Results</h1>
+
+    <div class="card-deck mb-3 mt-3 text-center">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Negative</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title"><%= @stats.results_negative %></h1>
+        </div>
+      </div>
+
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Pending</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title"><%= @stats.results_pending %></h1>
+        </div>
+      </div>
+
+      <div class="card mb-4 stat-card">
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12">
+    <h1>Public Health Monitoring</h1>
+
+    <div class="card-deck mb-3 mt-3 text-center">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Being Monitored</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title"><%= @stats.being_monitored %></h1>
+        </div>
+      </div>
+
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Monitored To Date</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title"><%= @stats.total_monitored %></h1>
+        </div>
+      </div>
+
+      <div class="card mb-4 stat-card">
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 mb-4 mt-1">
+    <p class="mb-0">Updated At: <%= @stats.last_update %></p>
+    <p>Data Source: <a href="http://www.floridahealth.gov/diseases-and-conditions/COVID-19/" target="_blank">Florida HEALTH</a></p>
+  </div>
+</div>

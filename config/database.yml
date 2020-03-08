@@ -1,0 +1,12 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("MAX_THREADS") { 5 } %>
+  
+development:
+  <<: *default
+  database: floridacovid_development
+
+production:
+  pool: 2
+  url: <%= ENV['DATABASE_URL'] %>
