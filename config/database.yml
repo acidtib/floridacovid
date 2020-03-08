@@ -8,5 +8,5 @@ development:
   database: floridacovid_development
 
 production:
-  pool: 2
+  <<: *default
   url: <%= ENV['DATABASE_URL'] %>
