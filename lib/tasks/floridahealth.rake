@@ -24,7 +24,7 @@ namespace :stat do
       results_pending: pending_tests.to_i,
       being_monitored: being_monitored.to_i,
       total_monitored: total_monitored.to_i,
-      last_update: last_update
+      last_update: last_updated
     )
   end
 end
