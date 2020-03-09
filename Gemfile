@@ -10,4 +10,5 @@ gem "nokogiri"
 
 group :production do
   gem "puma"
+  gem "rack-ssl-enforcer"
 end

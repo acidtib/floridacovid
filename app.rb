@@ -1,5 +1,8 @@
 require 'sinatra'
 require 'sinatra/activerecord'
+require 'rack/ssl-enforcer'
+
+use Rack::SslEnforcer if production?
 
 Dir["./models/*.rb"].each { |file| require file }
 
