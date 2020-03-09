@@ -1,5 +1,5 @@
 namespace :stat do
-  task :floridahealth do
+  task :florida do
     doc = Nokogiri::HTML(open("http://www.floridahealth.gov/diseases-and-conditions/COVID-19/"))
 
     block =  doc.css("#content_container #main_column .split_70-30 .split_70-30_left block")
