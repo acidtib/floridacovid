@@ -1,6 +1,6 @@
-<div class="row">
+<div class="row mb-4">
   <div class="col-12 mt-5">
-    <h1>Florida - Positive Cases of COVID-19</h1>
+    <h1>Florida's Positive Cases of COVID-19</h1>
     
     <div class="card-deck mb-3 mt-3 text-center">
       <div class="card mb-4 shadow-sm">
@@ -14,19 +14,19 @@
 
       <div class="card mb-4 shadow-sm">
         <div class="card-header">
-          <h4 class="my-0 font-weight-normal">Cases Repatriated</h4>
+          <h4 class="my-0 font-weight-normal">Non Resident</h4>
         </div>
         <div class="card-body">
-          <h1 class="card-title"><%= @stats.cases_repatriated %></h1>
+          <h1 class="card-title"><%= @stats.non_residents %></h1>
         </div>
       </div>
 
       <div class="card mb-4 shadow-sm">
         <div class="card-header">
-          <h4 class="my-0 font-weight-normal">Non Resident</h4>
+          <h4 class="my-0 font-weight-normal">Repatriated</h4>
         </div>
         <div class="card-body">
-          <h1 class="card-title"><%= @stats.non_residents %></h1>
+          <h1 class="card-title"><%= @stats.cases_repatriated %></h1>
         </div>
       </div>
     </div>
@@ -107,8 +107,24 @@
     </div>
   </div>
 
-  <div class="col-12 mb-4 mt-1">
+  <div class="col-12 mb-1 mt-1">
     <p class="mb-0">Updated At: <%= @stats.last_update %></p>
     <p>Data Source: <a href="http://www.floridahealth.gov/diseases-and-conditions/COVID-19/" target="_blank">Florida HEALTH</a></p>
+  </div>
+
+  <div class="col-12 mb-2 mt-1">
+    <hr>
+    <h4 class="mb-0">Cases Repatriated</h4>
+    <p>The United States Department of State officially coordinated the return of a person living in Florida to the United States and those persons are isolated at a federally designated site until healthy. A repatriated case is when the United States Department of State officially coordinates the return of a Florida resident to the United States.</p>
+  </div>
+
+  <div class="col-12 mb-2 mt-1">
+    <h4 class="mb-0">Cases Confirmed</h4>
+    <p>A Confirmed status is given when the Presumptive Positive sample is then confirmed by the CDC.</p>
+  </div>
+
+  <div class="col-12 mb-2 mt-1">
+    <h4 class="mb-0">Public Health Monitoring</h4>
+    <p>The number of people under public health monitoring includes those at risk of having been exposed to COVID-19 who are monitoring their health under the supervision of public health officials.</p>
   </div>
 </div>
