@@ -2,8 +2,10 @@ require 'sinatra'
 require 'sinatra/activerecord'
 require 'rack/ssl-enforcer'
 require 'sinatra/namespace'
+require 'sinatra/cross_origin'
 
 configure do
+  enable :cross_origin
   set :protection, :except => [:json_csrf]
 end
 
@@ -18,6 +20,7 @@ end
 
 namespace '/api/v1' do
   before do
+    response.headers['Access-Control-Allow-Origin'] = '*'
     content_type 'application/json'
   end
 
@@ -43,5 +46,12 @@ namespace '/api/v1' do
       },
       last_update: stats.last_update
     }.to_json
+  end
+
+  options "*" do
+    response.headers["Allow"] = "GET, PUT, POST, DELETE, OPTIONS"
+    response.headers["Access-Control-Allow-Headers"] = "Authorization, Content-Type, Accept"
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    200
   end
 end
