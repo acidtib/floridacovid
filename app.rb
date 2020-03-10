@@ -1,7 +1,7 @@
 require 'sinatra'
 require 'sinatra/activerecord'
-require 'sinatra/namespace'
 require 'rack/ssl-enforcer'
+require 'sinatra/namespace'
 
 use Rack::SslEnforcer if production?
 
