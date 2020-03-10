@@ -3,6 +3,10 @@ require 'sinatra/activerecord'
 require 'rack/ssl-enforcer'
 require 'sinatra/namespace'
 
+configure do
+  set :protection, :except => [:json_csrf]
+end
+
 use Rack::SslEnforcer if production?
 
 Dir["./models/*.rb"].each { |file| require file }
