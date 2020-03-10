@@ -11,6 +11,7 @@ gem "sinatra-cross_origin"
 gem "rake"
 gem "pg"
 gem "nokogiri"
+gem "httparty"
 
 group :production do
   gem "puma"
