@@ -6,14 +6,14 @@ namespace :stat do
 
     florida_residents = block.at('div:contains("Florida Residents")').text.split("–").first.strip
     cases_repatriated = block.at('div:contains("Florida Cases Repatriated")').text.split("–").first.strip
-    non_residents = block.at('div:contains("Non-Florida resident")').text.split("–").first.strip
+    non_residents = block.at('div:contains("Non-Florida Residents")').text.split("–").first.strip
     florida_deaths = block.at('h3:contains("Deaths")').next_element.text.split("–").first.strip
     negative_tests = block.at('h3:contains("Number of Negative Test Results")').next_element.text.strip
     pending_tests = block.at('h3:contains("Number of Pending Test Results")').next_element.text.strip
     being_monitored = block.at('div:contains("currently being monitored")').text.split("–").first.strip
     total_monitored = block.at('div:contains("people monitored to date")').text.split("–").first.strip
     last_updated = block.at('sup:contains("as of")').text.gsub("as of ", "")
-
+    
     state = State.find_by_slug("florida")
     last_stat = state.stats.last
 
