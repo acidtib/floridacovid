@@ -5,7 +5,7 @@ namespace :stat do
     block =  doc.css("#content_container #main_column .split_70-30 .split_70-30_left block")
 
     florida_residents = block.at('div:contains("Florida Residents")').text.split("–").first.strip
-    cases_repatriated = block.at('div:contains("Florida Cases Repatriated")').text.split("–").first.strip
+    cases_repatriated = block.at('div:contains("Florida Residents Diagnosed and Isolated Outside of Florida")').text.split("–").first.strip
     non_residents = block.at('div:contains("Non-Florida Residents")').text.split("–").first.strip
     florida_deaths = block.at('h3:contains("Deaths")').next_element.text.split("–").first.strip
     negative_tests = block.at('h3:contains("Number of Negative Test Results")').next_element.text.strip
