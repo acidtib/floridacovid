@@ -30,6 +30,7 @@ namespace '/api/v1' do
     
     {
       "cases": {
+        total: (stats.positive_residents + stats.non_residents + stats.cases_repatriated),
         residents: stats.positive_residents,
         repatriated: stats.cases_repatriated,
         non_residents: stats.non_residents,
