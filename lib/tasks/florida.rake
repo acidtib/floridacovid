@@ -11,7 +11,7 @@ namespace :stat do
     negative_tests = block.at('h3:contains("Number of Negative Test Results")').next_element.text.strip
     pending_tests = block.at('h3:contains("Number of Pending Test Results")').next_element.text.strip
     being_monitored = block.at('div:contains("currently being monitored")').text.split("–").first.strip
-    total_monitored = block.at('div:contains("people monitored to date")').text.split("–").first.strip
+    total_monitored = block.at('div:contains("people monitored to date")').text.split("–").first.gsub(",", "").strip
     last_updated = block.at('sup:contains("as of")').text.gsub("as of ", "")
     
     state = State.find_by_slug("florida")
