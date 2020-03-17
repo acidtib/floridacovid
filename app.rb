@@ -43,8 +43,7 @@ namespace '/api/v1' do
         pending: stats.results_pending
       },
       "monitored": {
-        currently: stats.being_monitored,
-        total: stats.total_monitored
+        currently: stats.being_monitored
       },
       last_update: stats.last_update
     }.to_json

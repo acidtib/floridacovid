@@ -7,15 +7,14 @@ namespace :stat do
 
       data = response["features"][0]["attributes"]
 
-      florida_residents = data["FloridaCases"]
-      cases_repatriated = data["ResidentsOut"]
-      non_residents = data["NResIN"]
+      florida_residents = data["Positive"]
+      cases_repatriated = data["FLResOut"]
+      non_residents = data["NonFlRes"]
       florida_deaths = data["Deaths"]
       negative_tests = data["Negative"]
       pending_tests = data["Pending"]
-      being_monitored = data["MonitoredC"]
-      total_monitored = data["MonitoredT"]
-      
+      being_monitored = data["Monitor"]
+     
       state = State.find_by_slug("florida")
       state.stats.create(
         positive_residents: florida_residents.to_i,
@@ -25,7 +24,6 @@ namespace :stat do
         results_negative: negative_tests.to_i,
         results_pending: pending_tests.to_i,
         being_monitored: being_monitored.to_i,
-        total_monitored: total_monitored.to_i,
         last_update: Time.now()
       )
     end
