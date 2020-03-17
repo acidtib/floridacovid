@@ -1,23 +1,22 @@
 namespace :stat do
   task :florida do
-    doc = Nokogiri::HTML(open("http://www.floridahealth.gov/diseases-and-conditions/COVID-19/"))
-
-    block =  doc.css("#content_container #main_column .split_70-30 .split_70-30_left block")
-
-    florida_residents = block.at('div:contains("Florida Residents")').text.split("–").first.strip
-    cases_repatriated = block.at('div:contains("Florida Residents Diagnosed and Isolated Outside of Florida")').text.split("–").first.strip
-    non_residents = block.at('div:contains("Non-Florida Residents")').text.split("–").first.strip
-    florida_deaths = block.at('h3:contains("Deaths")').next_element.text.split("–").first.strip
-    negative_tests = block.at('h3:contains("Number of Negative Test Results")').next_element.text.strip
-    pending_tests = block.at('h3:contains("Number of Pending Test Results")').next_element.text.strip
-    being_monitored = block.at('div:contains("currently being monitored")').text.split("–").first.strip
-    total_monitored = block.at('div:contains("people monitored to date")').text.split("–").first.gsub(",", "").strip
-    last_updated = block.at('sup:contains("as of")').text.gsub("as of ", "")
+    doc = HTTParty.get("https://services1.arcgis.com/CY1LXxl9zlJeBuRZ/arcgis/rest/services/Florida_Data/FeatureServer/0/query?f=json&where=1%3D1&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&resultOffset=0&resultRecordCount=50&cacheHint=true")
     
-    state = State.find_by_slug("florida")
-    last_stat = state.stats.last
+    if doc.code == 200
+      response = JSON.parse(doc.body)
 
-    if last_stat.last_update != last_updated
+      data = response["features"][0]["attributes"]
+
+      florida_residents = data["FloridaCases"]
+      cases_repatriated = data["ResidentsOut"]
+      non_residents = data["NResIN"]
+      florida_deaths = data["Deaths"]
+      negative_tests = data["Negative"]
+      pending_tests = data["Pending"]
+      being_monitored = data["MonitoredC"]
+      total_monitored = data["MonitoredT"]
+      
+      state = State.find_by_slug("florida")
       state.stats.create(
         positive_residents: florida_residents.to_i,
         cases_repatriated: cases_repatriated.to_i,
@@ -27,7 +26,7 @@ namespace :stat do
         results_pending: pending_tests.to_i,
         being_monitored: being_monitored.to_i,
         total_monitored: total_monitored.to_i,
-        last_update: last_updated
+        last_update: Time.now()
       )
     end
   end

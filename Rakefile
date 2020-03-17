@@ -13,5 +13,6 @@ require './app'
 
 require 'open-uri'
 require 'nokogiri'
+require 'pp'
 
 Dir.glob('./lib/tasks/*.rake').each { |r| import r }
