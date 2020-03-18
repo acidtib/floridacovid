@@ -18,22 +18,28 @@ Content-Type: application/json
 
 {
   "cases": {
-    "residents":12,
-    "repatriated":5,
-    "non_residents":1
+    "total": 243,
+    "residents": 216,
+    "repatriated": 6,
+    "non_residents": 21
   },
   "deaths": {
-    "residents":2
+    "residents": 7
   },
   "results": {
-    "negative":140,
-    "pending":115
+    "negative": 1017,
+    "pending": 1061
   },
   "monitored": {
-    "currently":302,
-    "total":1104
+    "currently": 832
   },
-  "last_update":"7:55 a.m. ET 3/9/2020"
+    "country": {
+    "name": "US",
+    "confirmed": 6362,
+    "recovered": 17,
+    "deaths": 108
+  },
+  "last_update": "2020-03-18 03:55:00 +0000"
 }
 ```
 
