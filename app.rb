@@ -16,6 +16,8 @@ Dir["./models/*.rb"].each { |file| require file }
 get '/' do
   @stats = State.find_by_slug("florida").stats.last
   @total = (@stats.positive_residents + @stats.non_residents + @stats.cases_repatriated)
+  @co = Country.find_by_slug("us")
+
   erb :home
 end
 

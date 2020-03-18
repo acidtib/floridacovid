@@ -110,6 +110,42 @@
     </div>
   </div>
 
+  <div class="col-12">
+    <h1>USA Cases</h1>
+    
+    <div class="card-deck mb-3 mt-3 text-center">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Confirmed</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title"><%= @co.confirmed %></h1>
+        </div>
+      </div>
+
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Recovered</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title"><%= @co.recovered %></h1>
+        </div>
+      </div>
+
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Deaths</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title"><%= @co.deaths %></h1>
+        </div>
+      </div>
+
+      <div class="card mb-4 stat-card">
+      </div>
+    </div>
+  </div>
+
   <div class="col-12 mb-1 mt-1">
     <p class="mb-0">Updated At: <%= @stats.last_update %></p>
     <p>Data Source: <a href="http://www.floridahealth.gov/diseases-and-conditions/COVID-19/" target="_blank">Florida HEALTH</a></p>
