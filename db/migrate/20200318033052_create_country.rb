@@ -6,6 +6,7 @@ class CreateCountry < ActiveRecord::Migration[6.0]
       t.integer :confirmed
       t.integer :recovered
       t.integer :deaths
+      t.timestamp :last_update
 
       t.timestamps null: false
     end

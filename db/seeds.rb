@@ -20,5 +20,6 @@ Country.create(
   slug: "us",
   confirmed: 0,
   recovered: 0,
-  deaths: 0
+  deaths: 0,
+  last_update: Time.strptime("1584558869000", '%Q')
 )

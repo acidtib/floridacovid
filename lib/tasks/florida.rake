@@ -14,8 +14,11 @@ namespace :stat do
       negative_tests = data["Negative"]
       pending_tests = data["Pending"]
       being_monitored = data["Monitor"]
-     
-      state = State.find_by_slug("florida")
+      
+      state = State.find_or_create_by(slug: "florida") do |st|
+        st.name = "Florida"
+      end
+
       state.stats.create(
         positive_residents: florida_residents.to_i,
         cases_repatriated: cases_repatriated.to_i,

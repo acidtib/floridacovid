@@ -10,6 +10,7 @@ class CreateStats < ActiveRecord::Migration[6.0]
       t.integer :results_pending
       t.integer :being_monitored
       t.integer :total_monitored
+      t.integer :recovered
       t.string :last_update
       
       t.timestamps null: false

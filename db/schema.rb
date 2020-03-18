@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2020_03_18_033052) do
     t.integer "confirmed"
     t.integer "recovered"
     t.integer "deaths"
+    t.datetime "last_update"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -42,6 +43,7 @@ ActiveRecord::Schema.define(version: 2020_03_18_033052) do
     t.integer "results_pending"
     t.integer "being_monitored"
     t.integer "total_monitored"
+    t.integer "recovered"
     t.string "last_update"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

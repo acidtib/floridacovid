@@ -58,6 +58,42 @@ namespace '/api/v1' do
     }.to_json
   end
 
+  namespace '/cases' do
+    get '/countries' do
+      countries = Country.all
+      
+      results = countries.map.each do |m|
+        {
+          name: m.name,
+          confirmed: m.confirmed,
+          recovered: m.recovered,
+          deaths: m.deaths,
+          last_update: m.last_update
+        }
+      end
+
+      results.to_json
+    end
+
+    get '/states' do
+      states = State.all
+      
+      results = states.map.each do |s|
+        stat = s.stats.last
+
+        {
+          name: s.name,
+          confirmed: stat.positive_residents,
+          recovered: stat.recovered,
+          deaths: stat.deaths,
+          last_update: stat.last_update
+        }
+      end
+
+      results.to_json
+    end
+  end
+
   options "*" do
     response.headers["Allow"] = "GET, PUT, POST, DELETE, OPTIONS"
     response.headers["Access-Control-Allow-Headers"] = "Authorization, Content-Type, Accept"
