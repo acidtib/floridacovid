@@ -14,3 +14,11 @@ state.stats.create(
   total_monitored: 1010,
   last_update: "9:40 p.m. ET 3/6/2020"
 )
+
+Country.create(
+  name: "US",
+  slug: "us",
+  confirmed: 0,
+  recovered: 0,
+  deaths: 0
+)

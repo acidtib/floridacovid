@@ -27,6 +27,7 @@ namespace '/api/v1' do
 
   get '/cases' do
     stats = State.find_by_slug("florida").stats.last
+    co = Country.find_by_slug("us")
     
     {
       "cases": {
@@ -44,6 +45,12 @@ namespace '/api/v1' do
       },
       "monitored": {
         currently: stats.being_monitored
+      },
+      "country": {
+        name: "US",
+        confirmed: co.confirmed,
+        recovered: co.recovered,
+        deaths: co.deaths
       },
       last_update: stats.last_update
     }.to_json
