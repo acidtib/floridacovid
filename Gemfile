@@ -12,6 +12,7 @@ gem "rake"
 gem "pg"
 gem "nokogiri"
 gem "httparty"
+gem "selenium-webdriver"
 
 group :production do
   gem "puma"
