@@ -15,7 +15,7 @@ Dir["./models/*.rb"].each { |file| require file }
 
 get '/' do
   @stats = State.find_by_slug("florida").stats.last
-  @total = (@stats.positive_residents + @stats.non_residents + @stats.cases_repatriated)
+  @total = (@stats.positive_residents + @stats.non_residents)
   @co = Country.find_by_slug("us")
 
   erb :home
@@ -33,9 +33,8 @@ namespace '/api/v1' do
     
     {
       "cases": {
-        total: (stats.positive_residents + stats.non_residents + stats.cases_repatriated),
+        total: (stats.positive_residents + stats.non_residents),
         residents: stats.positive_residents,
-        repatriated: stats.cases_repatriated,
         non_residents: stats.non_residents,
       },
       "deaths": {
