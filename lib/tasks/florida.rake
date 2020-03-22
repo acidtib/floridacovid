@@ -48,6 +48,9 @@ namespace :stat do
         being_monitored: being_monitored.to_i,
         last_update: Time.now()
       )
+
+      # TODO: get Recovered numbers
+      # https://services1.arcgis.com/0MSEUqKaxRlEPj5g/arcgis/rest/services/Coronavirus_2019_nCoV_Cases/FeatureServer/1/query?where=Province_State=%27Florida%27&outFields=OBJECTID,Province_State,Last_Update,Lat,Long_,Confirmed,Recovered,Deaths&outSR=4326&f=json
     end
 
     driver.quit

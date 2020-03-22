@@ -1,11 +1,11 @@
 <div class="row mb-4">
   <div class="col-12 mt-5">
-    <h1>Florida COVID-19 Cases</h1>
+    <h1><%= I18n.t('cases.title') %></h1>
     
     <div class="card-deck mb-3 mt-3 text-center">
       <div class="card mb-4 shadow-sm">
         <div class="card-header">
-          <h4 class="my-0 font-weight-normal">Total</h4>
+          <h4 class="my-0 font-weight-normal"><%= I18n.t('cases.total') %></h4>
         </div>
         <div class="card-body">
           <h1 class="card-title"><%= @total %></h1>
@@ -14,7 +14,7 @@
 
       <div class="card mb-4 shadow-sm">
         <div class="card-header">
-          <h4 class="my-0 font-weight-normal">Residents</h4>
+          <h4 class="my-0 font-weight-normal"><%= I18n.t('cases.residents') %></h4>
         </div>
         <div class="card-body">
           <h1 class="card-title"><%= @stats.positive_residents %></h1>
@@ -23,7 +23,7 @@
 
       <div class="card mb-4 shadow-sm">
         <div class="card-header">
-          <h4 class="my-0 font-weight-normal">Non Resident</h4>
+          <h4 class="my-0 font-weight-normal"><%= I18n.t('cases.non_resident') %></h4>
         </div>
         <div class="card-body">
           <h1 class="card-title"><%= @stats.non_residents %></h1>
@@ -34,12 +34,12 @@
   </div>
 
   <div class="col-12">
-    <h1>Deaths</h1>
+    <h1><%= I18n.t('deaths.title') %></h1>
 
     <div class="card-deck mb-3 mt-3 text-center">
       <div class="card mb-4 shadow-sm">
         <div class="card-header">
-          <h4 class="my-0 font-weight-normal">Residents</h4>
+          <h4 class="my-0 font-weight-normal"><%= I18n.t('deaths.residents') %></h4>
         </div>
         <div class="card-body">
           <h1 class="card-title"><%= @stats.deaths %></h1>
@@ -55,12 +55,12 @@
   </div>
 
   <div class="col-12">
-    <h1>Test Results</h1>
+    <h1><%= I18n.t('tests.title') %></h1>
 
     <div class="card-deck mb-3 mt-3 text-center">
       <div class="card mb-4 shadow-sm">
         <div class="card-header">
-          <h4 class="my-0 font-weight-normal">Negative</h4>
+          <h4 class="my-0 font-weight-normal"><%= I18n.t('tests.negative') %></h4>
         </div>
         <div class="card-body">
           <h1 class="card-title"><%= @stats.results_negative %></h1>
@@ -69,7 +69,7 @@
 
       <div class="card mb-4 shadow-sm">
         <div class="card-header">
-          <h4 class="my-0 font-weight-normal">Pending</h4>
+          <h4 class="my-0 font-weight-normal"><%= I18n.t('tests.pending') %></h4>
         </div>
         <div class="card-body">
           <h1 class="card-title"><%= @stats.results_pending %></h1>
@@ -82,12 +82,12 @@
   </div>
 
   <div class="col-12">
-    <h1>Public Health Monitoring</h1>
+    <h1><%= I18n.t('monitoring.title') %></h1>
 
     <div class="card-deck mb-3 mt-3 text-center">
       <div class="card mb-4 shadow-sm">
         <div class="card-header">
-          <h4 class="my-0 font-weight-normal">Being Monitored</h4>
+          <h4 class="my-0 font-weight-normal"><%= I18n.t('monitoring.monitored') %></h4>
         </div>
         <div class="card-body">
           <h1 class="card-title"><%= @stats.being_monitored %></h1>
@@ -103,12 +103,12 @@
   </div>
 
   <div class="col-12">
-    <h1>USA Cases</h1>
+    <h1><%= I18n.t('us.title') %></h1>
     
     <div class="card-deck mb-3 mt-3 text-center">
       <div class="card mb-4 shadow-sm">
         <div class="card-header">
-          <h4 class="my-0 font-weight-normal">Confirmed</h4>
+          <h4 class="my-0 font-weight-normal"><%= I18n.t('us.confirmed') %></h4>
         </div>
         <div class="card-body">
           <h1 class="card-title"><%= @co.confirmed %></h1>
@@ -117,7 +117,7 @@
 
       <div class="card mb-4 shadow-sm">
         <div class="card-header">
-          <h4 class="my-0 font-weight-normal">Recovered</h4>
+          <h4 class="my-0 font-weight-normal"><%= I18n.t('us.recovered') %></h4>
         </div>
         <div class="card-body">
           <h1 class="card-title"><%= @co.recovered %></h1>
@@ -126,7 +126,7 @@
 
       <div class="card mb-4 shadow-sm">
         <div class="card-header">
-          <h4 class="my-0 font-weight-normal">Deaths</h4>
+          <h4 class="my-0 font-weight-normal"><%= I18n.t('us.deaths') %></h4>
         </div>
         <div class="card-body">
           <h1 class="card-title"><%= @co.deaths %></h1>
@@ -141,12 +141,6 @@
   <div class="col-12 mb-1 mt-1">
     <p class="mb-0">Updated At: <%= @stats.last_update %></p>
     <p>Data Source: <a href="https://www.arcgis.com" target="_blank">ArcGIS</a></p>
-  </div>
-
-  <div class="col-12 mb-2 mt-1">
-    <hr>
-    <h4 class="mb-0">Cases Repatriated</h4>
-    <p>The United States Department of State officially coordinated the return of a person living in Florida to the United States and those persons are isolated at a federally designated site until healthy. A repatriated case is when the United States Department of State officially coordinates the return of a Florida resident to the United States.</p>
   </div>
 
   <div class="col-12 mb-2 mt-1">

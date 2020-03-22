@@ -73,6 +73,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord
   httparty
+  i18n
   nokogiri
   pg
   puma

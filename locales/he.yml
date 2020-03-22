@@ -1,0 +1,21 @@
+he:
+  cases:
+    title: 'COVID-19 מקרים של פלורידה'
+    total: 'סה"כ'
+    residents: 'תושבים'
+    non_resident: 'לא תושב'
+  deaths:
+    title: 'מקרי מוות'
+    residents: 'תושבים'
+  tests:
+    title: 'תוצאות מבחן'
+    negative: 'שלילי'
+    pending: 'ממתין ל'
+  monitoring:
+    title: 'פיקוח על בריאות הציבור'
+    monitored: 'להיות במעקב'
+  us:
+    title: 'מקרים בארה"ב'
+    confirmed: 'אושר'
+    recovered: 'התאושש'
+    deaths: 'מקרי מוות'

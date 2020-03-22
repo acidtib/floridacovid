@@ -1,0 +1,21 @@
+en:
+  cases:
+    title: "Florida COVID-19 Cases"
+    total: "Total"
+    residents: "Residents"
+    non_resident: "Non Resident"
+  deaths:
+    title: "Deaths"
+    residents: "Residents"
+  tests:
+    title: "Test Results"
+    negative: "Negative"
+    pending: "Pending"
+  monitoring:
+    title: "Public Health Monitoring"
+    monitored: "Being Monitored"
+  us:
+    title: "USA Cases"
+    confirmed: "Confirmed"
+    recovered: "Recovered"
+    deaths: "Deaths"

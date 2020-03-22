@@ -13,6 +13,7 @@ gem "pg"
 gem "nokogiri"
 gem "httparty"
 gem "selenium-webdriver"
+gem "i18n"
 
 group :production do
   gem "puma"

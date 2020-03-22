@@ -3,8 +3,14 @@ require 'sinatra/activerecord'
 require 'rack/ssl-enforcer'
 require 'sinatra/namespace'
 require 'sinatra/cross_origin'
+require 'i18n'
+require 'i18n/backend/fallbacks'
 
 configure do
+  I18n::Backend::Simple.send(:include, I18n::Backend::Fallbacks)
+  I18n.load_path = Dir[File.join(settings.root, 'locales', '*.yml')]
+  I18n.backend.load_translations
+
   enable :cross_origin
   set :protection, :except => [:json_csrf]
 end
@@ -12,6 +18,11 @@ end
 use Rack::SslEnforcer if production?
 
 Dir["./models/*.rb"].each { |file| require file }
+
+before '/:locale*' do
+  I18n.locale       =       params[:locale]
+  request.path_info = '/' + params[:splat ][0]
+end
 
 get '/' do
   @stats = State.find_by_slug("florida").stats.last
