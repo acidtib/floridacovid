@@ -20,3 +20,8 @@ es:
     confirmed: "Confirmado"
     recovered: "Recuperado"
     deaths: "Muertes"
+  earth:
+    title: "Casos del Planeta"
+    confirmed: "Confirmado"
+    recovered: "Recuperado"
+    deaths: "Muertes"

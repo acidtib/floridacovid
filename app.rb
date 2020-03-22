@@ -29,7 +29,8 @@ end
 get '/?:locale?' do
   @stats = State.find_by_slug("florida").stats.last
   @total = (@stats.positive_residents + @stats.non_residents)
-  @co = Country.find_by_slug("us")
+  @earth = Country.all
+  @co = @earth.find_by_slug("us")
 
   erb :home
 end

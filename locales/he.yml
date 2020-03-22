@@ -20,3 +20,8 @@ he:
     confirmed: 'אושר'
     recovered: 'התאושש'
     deaths: 'מקרי מוות'
+  earth:
+    title: "Earth Cases"
+    confirmed: 'אושר'
+    recovered: 'התאושש'
+    deaths: 'מקרי מוות'

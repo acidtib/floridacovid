@@ -151,6 +151,40 @@
     </div>
   </div>
 
+  <div class="col-12">
+    <h1><%= I18n.t('earth.title') %></h1>
+    
+    <div class="card-deck mb-3 mt-3 text-center">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal"><%= I18n.t('earth.confirmed') %></h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title"><%= @earth.sum(:confirmed) %></h1>
+        </div>
+      </div>
+
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal"><%= I18n.t('earth.recovered') %></h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title"><%= @earth.sum(:recovered) %></h1>
+        </div>
+      </div>
+
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal"><%= I18n.t('earth.deaths') %></h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title"><%= @earth.sum(:deaths) %></h1>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <div class="col-12 mb-1 mt-1">
     <p class="mb-0">Updated At: <%= @stats.last_update %></p>
     <p>Data Source: <a href="https://www.arcgis.com" target="_blank">ArcGIS</a></p>
