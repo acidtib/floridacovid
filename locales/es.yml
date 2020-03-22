@@ -4,6 +4,7 @@ es:
     total: "Total"
     residents: "Residentes"
     non_resident: "No Residente"
+    recovered: "Recuperado"
   deaths:
     title: "Muertes"
     residents: "Residentes"

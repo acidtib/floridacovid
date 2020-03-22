@@ -49,6 +49,7 @@ namespace '/api/v1' do
         total: (stats.positive_residents + stats.non_residents),
         residents: stats.positive_residents,
         non_residents: stats.non_residents,
+        recovered: stats.recovered
       },
       "deaths": {
         residents: stats.deaths

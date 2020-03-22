@@ -4,6 +4,7 @@ he:
     total: 'סה"כ'
     residents: 'תושבים'
     non_resident: 'לא תושב'
+    recovered: 'התאושש'
   deaths:
     title: 'מקרי מוות'
     residents: 'תושבים'
