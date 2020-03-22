@@ -63,6 +63,25 @@ namespace :stat do
           recovered: recovered
         )
       end
+
+      get_ages = HTTParty.get("https://services1.arcgis.com/CY1LXxl9zlJeBuRZ/arcgis/rest/services/Florida_COVID19_Cases/FeatureServer/0/query?f=json&where=1%3D1&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&outStatistics=%5B%7B%22statisticType%22%3A%22sum%22%2C%22onStatisticField%22%3A%22C_Age_0_9%22%2C%22outStatisticFieldName%22%3A%22C_Age_0_9%22%7D%2C%7B%22statisticType%22%3A%22sum%22%2C%22onStatisticField%22%3A%22C_Age_10_19%22%2C%22outStatisticFieldName%22%3A%22C_Age_10_19%22%7D%2C%7B%22statisticType%22%3A%22sum%22%2C%22onStatisticField%22%3A%22C_Age_20_29%22%2C%22outStatisticFieldName%22%3A%22C_Age_20_29%22%7D%2C%7B%22statisticType%22%3A%22sum%22%2C%22onStatisticField%22%3A%22C_Age_30_39%22%2C%22outStatisticFieldName%22%3A%22C_Age_30_39%22%7D%2C%7B%22statisticType%22%3A%22sum%22%2C%22onStatisticField%22%3A%22C_Age_40_49%22%2C%22outStatisticFieldName%22%3A%22C_Age_40_49%22%7D%2C%7B%22statisticType%22%3A%22sum%22%2C%22onStatisticField%22%3A%22C_Age_50_59%22%2C%22outStatisticFieldName%22%3A%22C_Age_50_59%22%7D%2C%7B%22statisticType%22%3A%22sum%22%2C%22onStatisticField%22%3A%22C_Age_60_69%22%2C%22outStatisticFieldName%22%3A%22C_Age_60_69%22%7D%2C%7B%22statisticType%22%3A%22sum%22%2C%22onStatisticField%22%3A%22C_Age_70_79%22%2C%22outStatisticFieldName%22%3A%22C_Age_70_79%22%7D%2C%7B%22statisticType%22%3A%22sum%22%2C%22onStatisticField%22%3A%22C_Age_80plus%22%2C%22outStatisticFieldName%22%3A%22C_Age_80plus%22%7D%5D&outSR=102100&cacheHint=true")
+      if get_ages.code == 200
+        response = JSON.parse(get_ages.body)
+
+        features = response["features"][0]["attributes"]
+
+        new_stat.update(
+          age_0_9: features["C_Age_0_9"],
+          age_10_19: features["C_Age_10_19"],
+          age_20_29: features["C_Age_20_29"],
+          age_30_39: features["C_Age_30_39"],
+          age_40_49: features["C_Age_40_49"],
+          age_50_59: features["C_Age_50_59"],
+          age_60_69: features["C_Age_60_69"],
+          age_70_79: features["C_Age_70_79"],
+          age_80plus: features["C_Age_80plus"]
+        )
+      end
     else
       driver.quit
     end

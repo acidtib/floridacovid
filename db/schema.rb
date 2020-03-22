@@ -45,6 +45,15 @@ ActiveRecord::Schema.define(version: 2020_03_18_033052) do
     t.integer "total_monitored"
     t.integer "recovered"
     t.string "last_update"
+    t.integer "age_0_9"
+    t.integer "age_10_19"
+    t.integer "age_20_29"
+    t.integer "age_30_39"
+    t.integer "age_40_49"
+    t.integer "age_50_59"
+    t.integer "age_60_69"
+    t.integer "age_70_79"
+    t.integer "age_80plus"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
