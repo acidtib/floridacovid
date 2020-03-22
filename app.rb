@@ -20,11 +20,13 @@ use Rack::SslEnforcer if production?
 Dir["./models/*.rb"].each { |file| require file }
 
 before '/:locale*' do
-  I18n.locale       =       params[:locale]
-  request.path_info = '/' + params[:splat ][0]
+  unless params[:locale] == "api"
+    I18n.locale = params[:locale]
+    request.path_info = '/' + params[:splat ][0]
+  end
 end
 
-get '/' do
+get '/?:locale?' do
   @stats = State.find_by_slug("florida").stats.last
   @total = (@stats.positive_residents + @stats.non_residents)
   @co = Country.find_by_slug("us")
