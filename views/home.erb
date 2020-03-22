@@ -8,7 +8,7 @@
           <h4 class="my-0 font-weight-normal"><%= I18n.t('cases.total') %></h4>
         </div>
         <div class="card-body">
-          <h1 class="card-title"><%= @total %></h1>
+          <h1 class="card-title"><%= number_with_delimiter(@total) %></h1>
         </div>
       </div>
 
@@ -17,7 +17,7 @@
           <h4 class="my-0 font-weight-normal"><%= I18n.t('cases.residents') %></h4>
         </div>
         <div class="card-body">
-          <h1 class="card-title"><%= @stats.positive_residents %></h1>
+          <h1 class="card-title"><%= number_with_delimiter(@stats.positive_residents) %></h1>
         </div>
       </div>
 
@@ -26,7 +26,7 @@
           <h4 class="my-0 font-weight-normal"><%= I18n.t('cases.non_resident') %></h4>
         </div>
         <div class="card-body">
-          <h1 class="card-title"><%= @stats.non_residents %></h1>
+          <h1 class="card-title"><%= number_with_delimiter(@stats.non_residents) %></h1>
         </div>
       </div>
 
@@ -35,7 +35,7 @@
           <h4 class="my-0 font-weight-normal"><%= I18n.t('cases.recovered') %></h4>
         </div>
         <div class="card-body">
-          <h1 class="card-title"><%= @stats.recovered %></h1>
+          <h1 class="card-title"><%= number_with_delimiter(@stats.recovered) %></h1>
         </div>
       </div>
 
@@ -51,7 +51,7 @@
           <h4 class="my-0 font-weight-normal"><%= I18n.t('tests.negative') %></h4>
         </div>
         <div class="card-body">
-          <h1 class="card-title"><%= @stats.results_negative %></h1>
+          <h1 class="card-title"><%= number_with_delimiter(@stats.results_negative) %></h1>
         </div>
       </div>
 
@@ -60,7 +60,7 @@
           <h4 class="my-0 font-weight-normal"><%= I18n.t('tests.pending') %></h4>
         </div>
         <div class="card-body">
-          <h1 class="card-title"><%= @stats.results_pending %></h1>
+          <h1 class="card-title"><%= number_with_delimiter(@stats.results_pending) %></h1>
         </div>
       </div>
 
@@ -78,7 +78,7 @@
           <h4 class="my-0 font-weight-normal"><%= I18n.t('deaths.residents') %></h4>
         </div>
         <div class="card-body">
-          <h1 class="card-title"><%= @stats.deaths %></h1>
+          <h1 class="card-title"><%= number_with_delimiter(@stats.deaths) %></h1>
         </div>
       </div>
 
@@ -99,7 +99,7 @@
           <h4 class="my-0 font-weight-normal"><%= I18n.t('monitoring.monitored') %></h4>
         </div>
         <div class="card-body">
-          <h1 class="card-title"><%= @stats.being_monitored %></h1>
+          <h1 class="card-title"><%= number_with_delimiter(@stats.being_monitored) %></h1>
         </div>
       </div>
 
@@ -126,7 +126,7 @@
           <h4 class="my-0 font-weight-normal"><%= I18n.t('us.confirmed') %></h4>
         </div>
         <div class="card-body">
-          <h1 class="card-title"><%= @co.confirmed %></h1>
+          <h1 class="card-title"><%= number_with_delimiter(@co.confirmed) %></h1>
         </div>
       </div>
 
@@ -135,7 +135,7 @@
           <h4 class="my-0 font-weight-normal"><%= I18n.t('us.recovered') %></h4>
         </div>
         <div class="card-body">
-          <h1 class="card-title"><%= @co.recovered %></h1>
+          <h1 class="card-title"><%= number_with_delimiter(@co.recovered) %></h1>
         </div>
       </div>
 
@@ -144,7 +144,7 @@
           <h4 class="my-0 font-weight-normal"><%= I18n.t('us.deaths') %></h4>
         </div>
         <div class="card-body">
-          <h1 class="card-title"><%= @co.deaths %></h1>
+          <h1 class="card-title"><%= number_with_delimiter(@co.deaths) %></h1>
         </div>
       </div>
 
@@ -160,7 +160,7 @@
           <h4 class="my-0 font-weight-normal"><%= I18n.t('earth.confirmed') %></h4>
         </div>
         <div class="card-body">
-          <h1 class="card-title"><%= @earth.sum(:confirmed) %></h1>
+          <h1 class="card-title"><%= number_with_delimiter(@earth.sum(:confirmed)) %></h1>
         </div>
       </div>
 
@@ -169,7 +169,7 @@
           <h4 class="my-0 font-weight-normal"><%= I18n.t('earth.recovered') %></h4>
         </div>
         <div class="card-body">
-          <h1 class="card-title"><%= @earth.sum(:recovered) %></h1>
+          <h1 class="card-title"><%= number_with_delimiter(@earth.sum(:recovered)) %></h1>
         </div>
       </div>
 
@@ -178,7 +178,7 @@
           <h4 class="my-0 font-weight-normal"><%= I18n.t('earth.deaths') %></h4>
         </div>
         <div class="card-body">
-          <h1 class="card-title"><%= @earth.sum(:deaths) %></h1>
+          <h1 class="card-title"><%= number_with_delimiter(@earth.sum(:deaths)) %></h1>
         </div>
       </div>
 

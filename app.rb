@@ -115,3 +115,9 @@ namespace '/api/v1' do
     200
   end
 end
+
+helpers do
+  def number_with_delimiter(num)
+    num.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
+  end
+end
