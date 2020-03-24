@@ -27,8 +27,10 @@ before '/:locale*' do
 end
 
 get '/?:locale?' do
-  @stats = State.find_by_slug("florida").stats.last
+  @state = State.find_by_slug("florida")
+  @stats = @state.stats.last
   @total = (@stats.positive_residents + @stats.non_residents)
+  @counties = @state.counties.all
   @earth = Country.all
   @co = @earth.find_by_slug("us")
 
@@ -141,6 +143,24 @@ namespace '/api/v1' do
         longitude: "0",
         last_update: countries.first.last_update
       }.to_json
+    end
+
+    get '/counties' do
+      state = State.find_by_slug("florida")
+      counties = state.counties.all
+      
+      results = counties.map.each do |c|
+        {
+          name: c.name,
+          total: number_with_delimiter((c.residents + c.non_residents)),
+          residents: number_with_delimiter(c.residents),
+          non_residents: number_with_delimiter(c.non_residents),
+          deaths: number_with_delimiter(c.deaths),
+          last_update: c.last_update
+        }
+      end
+      
+      results.to_json
     end
   end
 

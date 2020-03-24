@@ -111,10 +111,43 @@
     </div>
   </div>
 
-  <div class="col-12 mb-1 mt-1">
+  <div class="col-12 mb-4 mt-1">
     <h1><%= I18n.t('age.title') %></h1>
 
     <canvas id="age_chart" style="position: relative; height:40vh; width:80vw"></canvas>
+  </div>
+
+  <div class="col-12">
+    <h1>Cases by County</h1>
+    
+    <div class="card-deck mb-3 mt-3 text-center">
+      <div class="card shadow-sm">
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">Total</th>
+              <th scope="col">Residents</th>
+              <th scope="col">Non Resident</th>
+              <th scope="col">Deaths</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @counties.each do |ct| %>
+              <tr>
+                <th scope="row"><%= ct.name %></th>
+                <td><%= (ct.residents + ct.non_residents) %></td>
+                <td><%= ct.residents %></td>
+                <td><%= ct.non_residents %></td>
+                <td><%= ct.deaths %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
   </div>
 
   <div class="col-12">
