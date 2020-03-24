@@ -82,6 +82,8 @@ namespace '/api/v1' do
           confirmed: m.confirmed,
           recovered: m.recovered,
           deaths: m.deaths,
+          latitude: m.latitude,
+          longitude: m.longitude,
           last_update: m.last_update
         }
       end
@@ -100,6 +102,8 @@ namespace '/api/v1' do
           confirmed: stat.positive_residents,
           recovered: stat.recovered,
           deaths: stat.deaths,
+          latitude: s.latitude,
+          longitude: s.longitude,
           last_update: stat.last_update
         }
       end

@@ -17,12 +17,16 @@ namespace :stat do
         recovered = att["Recovered"]
         deaths = att["Deaths"]
         last_update = Time.strptime(att["Last_Update"].to_s, '%Q')
+        latitude = att["Lat"]
+        longitude = att["Long_"]
 
         get_country.update(
           confirmed: confirmed,
           recovered: recovered,
           deaths: deaths,
-          last_update: last_update
+          last_update: last_update,
+          latitude: latitude,
+          longitude: longitude
         )
       end
     end

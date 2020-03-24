@@ -11,13 +11,15 @@ namespace :stat do
 
         get_state = State.find_or_create_by(slug: state_slug) do |st|
           st.name = att["Province_State"]
+          st.latitude = att["Lat"]
+          st.longitude = att["Long_"]
         end
 
         if state_slug != "florida"
           confirmed = att["Confirmed"]
           recovered = att["Recovered"]
           deaths = att["Deaths"]
-          last_update = Time.strptime(att["Last_Update"].to_s, '%Q')
+          last_update = Time.strptime(att["Last_Update"].to_s, '%Q') rescue nil
 
           get_state.stats.create(
             positive_residents: confirmed,

@@ -7,6 +7,8 @@ class CreateCountry < ActiveRecord::Migration[6.0]
       t.integer :recovered
       t.integer :deaths
       t.timestamp :last_update
+      t.string :latitude
+      t.string :longitude
 
       t.timestamps null: false
     end

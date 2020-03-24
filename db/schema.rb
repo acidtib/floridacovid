@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 2020_03_18_033052) do
     t.integer "recovered"
     t.integer "deaths"
     t.datetime "last_update"
+    t.string "latitude"
+    t.string "longitude"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -29,6 +31,8 @@ ActiveRecord::Schema.define(version: 2020_03_18_033052) do
   create_table "states", force: :cascade do |t|
     t.string "name"
     t.string "slug"
+    t.string "latitude"
+    t.string "longitude"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
