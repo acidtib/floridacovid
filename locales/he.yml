@@ -25,3 +25,5 @@ he:
     confirmed: 'אושר'
     recovered: 'התאושש'
     deaths: 'מקרי מוות'
+  age:
+    title: 'התפלגות גיל'

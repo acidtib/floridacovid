@@ -66,6 +66,17 @@ namespace '/api/v1' do
       "monitored": {
         currently: stats.being_monitored
       },
+      "ages": {
+        "0_9": stats.age_0_9, 
+        "10_19": stats.age_10_19, 
+        "20_29": stats.age_20_29, 
+        "30_39": stats.age_30_39, 
+        "40_49": stats.age_40_49, 
+        "50_59": stats.age_50_59, 
+        "60_69": stats.age_60_69, 
+        "70_79": stats.age_70_79, 
+        "80plus": stats.age_80plus
+      },
       "country": {
         name: "US",
         confirmed: co.confirmed,

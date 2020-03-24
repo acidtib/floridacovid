@@ -25,3 +25,5 @@ es:
     confirmed: "Confirmado"
     recovered: "Recuperado"
     deaths: "Muertes"
+  age:
+    title: "Distribución de Edad"

@@ -25,3 +25,5 @@ en:
     confirmed: "Confirmed"
     recovered: "Recovered"
     deaths: "Deaths"
+  age:
+    title: "Age Distribution"
