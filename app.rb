@@ -30,7 +30,7 @@ get '/?:locale?' do
   @state = State.find_by_slug("florida")
   @stats = @state.stats.last
   @total = (@stats.positive_residents + @stats.non_residents)
-  @counties = @state.counties.all
+  @counties = @state.counties.order(:name).all
   @earth = Country.all
   @co = @earth.find_by_slug("us")
 
@@ -147,7 +147,7 @@ namespace '/api/v1' do
 
     get '/counties' do
       state = State.find_by_slug("florida")
-      counties = state.counties.all
+      counties = state.counties.order(:name).all
       
       results = counties.map.each do |c|
         {
