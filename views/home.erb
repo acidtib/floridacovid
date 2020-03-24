@@ -122,30 +122,30 @@
     
     <div class="card-deck mb-3 mt-3 text-center">
       <div class="card shadow-sm">
-
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col"></th>
-              <th scope="col">Total</th>
-              <th scope="col">Residents</th>
-              <th scope="col">Non Resident</th>
-              <th scope="col">Deaths</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @counties.each do |ct| %>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
               <tr>
-                <th scope="row"><%= ct.name %></th>
-                <td><%= (ct.residents + ct.non_residents) %></td>
-                <td><%= ct.residents %></td>
-                <td><%= ct.non_residents %></td>
-                <td><%= ct.deaths %></td>
+                <th scope="col"></th>
+                <th scope="col">Total</th>
+                <th scope="col">Residents</th>
+                <th scope="col">Non Resident</th>
+                <th scope="col">Deaths</th>
               </tr>
-            <% end %>
-          </tbody>
-        </table>
-
+            </thead>
+            <tbody>
+              <% @counties.each do |ct| %>
+                <tr>
+                  <th scope="row"><%= ct.name %></th>
+                  <td><%= (ct.residents + ct.non_residents) %></td>
+                  <td><%= ct.residents %></td>
+                  <td><%= ct.non_residents %></td>
+                  <td><%= ct.deaths %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
