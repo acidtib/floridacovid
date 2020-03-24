@@ -42,10 +42,14 @@ namespace '/api/v1' do
   end
 
   get '/cases' do
-    stats = State.find_by_slug("florida").stats.last
+    state = State.find_by_slug("florida")
+    stats = state.stats.last
     co = Country.find_by_slug("us")
     
     {
+      name: state.name,
+      latitude: state.latitude,
+      longitude: state.longitude,
       "cases": {
         total: (stats.positive_residents + stats.non_residents),
         residents: stats.positive_residents,
@@ -66,7 +70,10 @@ namespace '/api/v1' do
         name: "US",
         confirmed: co.confirmed,
         recovered: co.recovered,
-        deaths: co.deaths
+        deaths: co.deaths,
+        latitude: co.latitude,
+        longitude: co.longitude,
+        last_update: co.last_update
       },
       last_update: stats.last_update
     }.to_json
@@ -109,6 +116,20 @@ namespace '/api/v1' do
       end
 
       results.to_json
+    end
+
+    get '/earth' do
+      countries = Country.all
+      
+      {
+        name: "Earth",
+        confirmed: number_with_delimiter(countries.sum(:confirmed)),
+        recovered: number_with_delimiter(countries.sum(:recovered)),
+        deaths: number_with_delimiter(countries.sum(:deaths)),
+        latitude: "+90",
+        longitude: "0",
+        last_update: countries.first.last_update
+      }.to_json
     end
   end
 
