@@ -27,6 +27,15 @@ state.stats.create(
   age_80plus: 93
 )
 
+state.counties.create(
+  name: "ALACHUA",
+  slug: "alachua",
+  residents: 34,
+  non_residents: 3,
+  deaths: 0,
+  last_update: "2020-03-24 16:45:50 +0000", 
+)
+
 Country.create(
   name: "US",
   slug: "us",
