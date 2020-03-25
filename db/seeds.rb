@@ -16,15 +16,16 @@ state.stats.create(
   total_monitored: nil, 
   recovered: 0, 
   last_update: "2020-03-24 16:45:50 +0000", 
-  age_0_9: 9, 
-  age_10_19: 47, 
-  age_20_29: 188, 
-  age_30_39: 196, 
-  age_40_49: 204, 
-  age_50_59: 247, 
-  age_60_69: 249, 
-  age_70_79: 178, 
-  age_80plus: 93
+  age_0_4: 2,
+  age_5_14: 9, 
+  age_15_24: 47, 
+  age_25_34: 188, 
+  age_35_44: 196, 
+  age_45_54: 204, 
+  age_55_64: 247, 
+  age_65_74: 249, 
+  age_75_84: 178, 
+  age_85plus: 93
 )
 
 state.counties.create(

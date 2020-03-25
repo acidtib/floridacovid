@@ -238,7 +238,7 @@
     <h1>API</h1>
     <p class="mb-0">We have a public API to retrieve the latest update from `arcgis.com`.</p>
 
-    <ul class="mt-2">
+    <ul class="mt-2 pl-3">
       <li class="mb-2">
         <h6 class="mb-0">Returns case data from Florida</h6>
         <a href="https://floridacovid.com/api/v1/cases" target="_blank">https://floridacovid.com/api/v1/cases</a>
@@ -268,11 +268,12 @@ var age_chart = document.getElementById('age_chart').getContext('2d');
 new Chart(age_chart, {
     type: 'bar',
     data: {
-        labels: ['0-9', '10-19', '20-29', '30-39', '40-49', '50-59', '60-69', '70-79', '80+'],
+        labels: ['0-4', '5-14', '15-24', '25-34', '35-44', '45-54', '55-64', '65-74', '75-84', '80+'],
         datasets: [{
-            data: [<%= @stats.age_0_9 %>, <%= @stats.age_10_19 %>, <%= @stats.age_20_29 %>, <%= @stats.age_30_39 %>, <%= @stats.age_40_49 %>, <%= @stats.age_50_59 %>, <%= @stats.age_60_69 %>, <%= @stats.age_70_79 %>, <%= @stats.age_80plus %>],
+            data: [<%= @stats.age_0_4 %>, <%= @stats.age_5_14 %>, <%= @stats.age_15_24 %>, <%= @stats.age_25_34 %>, <%= @stats.age_35_44 %>, <%= @stats.age_45_54 %>, <%= @stats.age_55_64 %>, <%= @stats.age_65_74 %>, <%= @stats.age_75_84 %>, <%= @stats.age_85plus %>],
             backgroundColor: [
                 'rgb(206, 164, 100)', //, 0.2
+                'rgb(255, 0, 0)',
                 'rgb(205, 207, 107)',
                 'rgb(169, 255, 1)',
                 'rgb(85, 255, 0)',
@@ -284,6 +285,7 @@ new Chart(age_chart, {
             ],
             borderColor: [
                 'rgba(206, 164, 100, 1)', //, 1
+                'rgb(255, 0, 0, 1)',
                 'rgba(205, 207, 107, 1)',
                 'rgb(169, 255, 1)',
                 'rgb(85, 255, 0)',

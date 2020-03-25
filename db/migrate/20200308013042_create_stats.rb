@@ -12,15 +12,16 @@ class CreateStats < ActiveRecord::Migration[6.0]
       t.integer :total_monitored
       t.integer :recovered
       t.string :last_update
-      t.integer :age_0_9
-      t.integer :age_10_19
-      t.integer :age_20_29
-      t.integer :age_30_39
-      t.integer :age_40_49
-      t.integer :age_50_59
-      t.integer :age_60_69
-      t.integer :age_70_79
-      t.integer :age_80plus
+      t.integer :age_0_4
+      t.integer :age_5_14
+      t.integer :age_15_24
+      t.integer :age_25_34
+      t.integer :age_35_44
+      t.integer :age_45_54
+      t.integer :age_55_64
+      t.integer :age_65_74
+      t.integer :age_75_84
+      t.integer :age_85plus
       
       t.timestamps null: false
     end

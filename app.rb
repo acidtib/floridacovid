@@ -71,15 +71,16 @@ namespace '/api/v1' do
         currently: stats.being_monitored
       },
       "ages": {
-        "0_9": stats.age_0_9, 
-        "10_19": stats.age_10_19, 
-        "20_29": stats.age_20_29, 
-        "30_39": stats.age_30_39, 
-        "40_49": stats.age_40_49, 
-        "50_59": stats.age_50_59, 
-        "60_69": stats.age_60_69, 
-        "70_79": stats.age_70_79, 
-        "80plus": stats.age_80plus
+        "0_4": stats.age_0_4, 
+        "5_14": stats.age_5_14, 
+        "15_24": stats.age_15_24, 
+        "25_34": stats.age_25_34, 
+        "35_44": stats.age_35_44, 
+        "45_54": stats.age_45_54, 
+        "55_64": stats.age_55_64, 
+        "65_74": stats.age_65_74, 
+        "75_84": stats.age_75_84,
+        "85plus": stats.age_85plus
       },
       "country": {
         name: "US",

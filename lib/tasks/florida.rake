@@ -64,49 +64,54 @@ namespace :stat do
         )
       end
 
-      get_ages = HTTParty.get("https://services1.arcgis.com/CY1LXxl9zlJeBuRZ/arcgis/rest/services/Florida_COVID19_Cases/FeatureServer/0/query?f=json&where=1%3D1&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&outStatistics=%5B%7B%22statisticType%22%3A%22sum%22%2C%22onStatisticField%22%3A%22C_Age_0_9%22%2C%22outStatisticFieldName%22%3A%22C_Age_0_9%22%7D%2C%7B%22statisticType%22%3A%22sum%22%2C%22onStatisticField%22%3A%22C_Age_10_19%22%2C%22outStatisticFieldName%22%3A%22C_Age_10_19%22%7D%2C%7B%22statisticType%22%3A%22sum%22%2C%22onStatisticField%22%3A%22C_Age_20_29%22%2C%22outStatisticFieldName%22%3A%22C_Age_20_29%22%7D%2C%7B%22statisticType%22%3A%22sum%22%2C%22onStatisticField%22%3A%22C_Age_30_39%22%2C%22outStatisticFieldName%22%3A%22C_Age_30_39%22%7D%2C%7B%22statisticType%22%3A%22sum%22%2C%22onStatisticField%22%3A%22C_Age_40_49%22%2C%22outStatisticFieldName%22%3A%22C_Age_40_49%22%7D%2C%7B%22statisticType%22%3A%22sum%22%2C%22onStatisticField%22%3A%22C_Age_50_59%22%2C%22outStatisticFieldName%22%3A%22C_Age_50_59%22%7D%2C%7B%22statisticType%22%3A%22sum%22%2C%22onStatisticField%22%3A%22C_Age_60_69%22%2C%22outStatisticFieldName%22%3A%22C_Age_60_69%22%7D%2C%7B%22statisticType%22%3A%22sum%22%2C%22onStatisticField%22%3A%22C_Age_70_79%22%2C%22outStatisticFieldName%22%3A%22C_Age_70_79%22%7D%2C%7B%22statisticType%22%3A%22sum%22%2C%22onStatisticField%22%3A%22C_Age_80plus%22%2C%22outStatisticFieldName%22%3A%22C_Age_80plus%22%7D%5D&outSR=102100&cacheHint=true")
+      get_ages = HTTParty.get("https://services1.arcgis.com/CY1LXxl9zlJeBuRZ/arcgis/rest/services/Florida_COVID19_Cases/FeatureServer/0/query?f=json&where=1%3D1&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&outStatistics=%5B%7B%22statisticType%22%3A%22sum%22%2C%22onStatisticField%22%3A%22C_Age_0_4%22%2C%22outStatisticFieldName%22%3A%22C_Age_0_4%22%7D%2C%7B%22statisticType%22%3A%22sum%22%2C%22onStatisticField%22%3A%22C_Age_5_14%22%2C%22outStatisticFieldName%22%3A%22C_Age_5_14%22%7D%2C%7B%22statisticType%22%3A%22sum%22%2C%22onStatisticField%22%3A%22C_Age_15_24%22%2C%22outStatisticFieldName%22%3A%22C_Age_15_24%22%7D%2C%7B%22statisticType%22%3A%22sum%22%2C%22onStatisticField%22%3A%22C_Age_25_34%22%2C%22outStatisticFieldName%22%3A%22C_Age_25_34%22%7D%2C%7B%22statisticType%22%3A%22sum%22%2C%22onStatisticField%22%3A%22C_Age_35_44%22%2C%22outStatisticFieldName%22%3A%22C_Age_35_44%22%7D%2C%7B%22statisticType%22%3A%22sum%22%2C%22onStatisticField%22%3A%22C_Age_45_54%22%2C%22outStatisticFieldName%22%3A%22C_Age_45_54%22%7D%2C%7B%22statisticType%22%3A%22sum%22%2C%22onStatisticField%22%3A%22C_Age_55_64%22%2C%22outStatisticFieldName%22%3A%22C_Age_55_64%22%7D%2C%7B%22statisticType%22%3A%22sum%22%2C%22onStatisticField%22%3A%22C_Age_65_74%22%2C%22outStatisticFieldName%22%3A%22C_Age_65_74%22%7D%2C%7B%22statisticType%22%3A%22sum%22%2C%22onStatisticField%22%3A%22C_Age_75_84%22%2C%22outStatisticFieldName%22%3A%22C_Age_75_84%22%7D%2C%7B%22statisticType%22%3A%22sum%22%2C%22onStatisticField%22%3A%22C_Age_85plus%22%2C%22outStatisticFieldName%22%3A%22C_Age_85plus%22%7D%5D&cacheHint=true")
       if get_ages.code == 200
         response = JSON.parse(get_ages.body)
 
-        features = response["features"][0]["attributes"]
+        unless response["error"]
+          features = response["features"][0]["attributes"]
 
-        new_stat.update(
-          age_0_9: features["C_Age_0_9"],
-          age_10_19: features["C_Age_10_19"],
-          age_20_29: features["C_Age_20_29"],
-          age_30_39: features["C_Age_30_39"],
-          age_40_49: features["C_Age_40_49"],
-          age_50_59: features["C_Age_50_59"],
-          age_60_69: features["C_Age_60_69"],
-          age_70_79: features["C_Age_70_79"],
-          age_80plus: features["C_Age_80plus"]
-        )
+          new_stat.update(
+            age_0_4: features["C_Age_0_4"],
+            age_5_14: features["C_Age_5_14"],
+            age_15_24: features["C_Age_15_24"],
+            age_25_34: features["C_Age_25_34"],
+            age_35_44: features["C_Age_35_44"],
+            age_45_54: features["C_Age_45_54"],
+            age_55_64: features["C_Age_55_64"],
+            age_65_74: features["C_Age_65_74"],
+            age_75_84: features["C_Age_75_84"],
+            age_85plus: features["C_Age_85plus"]
+          )
+        end
       end
 
       get_counties = HTTParty.get("https://services1.arcgis.com/CY1LXxl9zlJeBuRZ/arcgis/rest/services/Florida_Testing/FeatureServer/0/query?f=json&where=1%3D1&returnGeometry=true&spatialRel=esriSpatialRelIntersects&maxAllowableOffset=2445&geometry=%7B%22xmin%22%3A-10018754.171395395%2C%22ymin%22%3A2504688.5428502634%2C%22xmax%22%3A-8766409.899971206%2C%22ymax%22%3A3757032.8142744508%2C%22spatialReference%22%3A%7B%22wkid%22%3A102100%2C%22latestWkid%22%3A3857%7D%7D&geometryType=esriGeometryEnvelope&inSR=102100&outFields=*&outSR=102100&resultType=tile")
       if get_counties.code == 200
         response = JSON.parse(get_counties.body)
 
-        response["features"].each do |c|
-          att = c["attributes"]
+        unless response["error"]
+          response["features"].each do |c|
+            att = c["attributes"]
 
-          name = att["COUNTYNAME"].capitalize
-          slug = att["COUNTYNAME"].downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
-          residents = att["C_FLRes"]
-          non_residents = att["C_NotFLRes"]
-          deaths = att["FLResDeaths"]
-          last_update = Time.now()
+            name = att["COUNTYNAME"].capitalize
+            slug = att["COUNTYNAME"].downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
+            residents = att["C_FLRes"]
+            non_residents = att["C_NotFLRes"]
+            deaths = att["FLResDeaths"]
+            last_update = Time.now()
 
-          county = state.counties.find_or_create_by(slug: slug) do |ct|
-            ct.name = name
+            county = state.counties.find_or_create_by(slug: slug) do |ct|
+              ct.name = name
+            end
+
+            county.update(
+              residents: residents,
+              non_residents: non_residents,
+              deaths: deaths,
+              last_update: last_update, 
+            )
           end
-
-          county.update(
-            residents: residents,
-            non_residents: non_residents,
-            deaths: deaths,
-            last_update: last_update, 
-          )
         end
       end
     else
