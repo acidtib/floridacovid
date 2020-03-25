@@ -7,6 +7,8 @@ require 'i18n'
 require 'i18n/backend/fallbacks'
 
 configure do
+  I18n.enforce_available_locales = true
+  I18n.default_locale = "en"
   I18n::Backend::Simple.send(:include, I18n::Backend::Fallbacks)
   I18n.load_path = Dir[File.join(settings.root, 'locales', '*.yml')]
   I18n.backend.load_translations
@@ -21,12 +23,12 @@ Dir["./models/*.rb"].each { |file| require file }
 
 before '/:locale*' do
   unless params[:locale] == "api"
-    I18n.locale = params[:locale]
+    I18n.locale = params[:locale] || I18n.default_locale
     request.path_info = '/' + params[:splat ][0]
   end
 end
 
-get '/?:locale?' do
+get '/(.:locale)?' do
   @state = State.find_by_slug("florida")
   @stats = @state.stats.last
   @total = (@stats.positive_residents + @stats.non_residents)
