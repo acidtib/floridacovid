@@ -27,13 +27,12 @@ namespace :stat do
       doc = Nokogiri::HTML(driver.page_source)
 
       florida_residents = doc.css("div#ember38 g.responsive-text-label text")[1].text.gsub(",", "")
-      non_residents = doc.css("div#ember64 g.responsive-text-label text")[1].text.gsub(",", "")
+      non_residents = doc.css("div#ember144 g.responsive-text-label text")[1].text.gsub(",", "")
       florida_deaths = doc.css("div#ember52 g.responsive-text-label text")[1].text.gsub(",", "")
       being_monitored = doc.css("div#ember45 g.responsive-text-label text")[1].text.gsub(",", "")
 
-      total_tests = doc.css("div#ember93 g.responsive-text-label text")[1].text.gsub(",", "")
-      negative_tests = doc.css("div#ember107 g.responsive-text-label text")[1].text.gsub(",", "")
-      pending_tests = (total_tests.to_i - negative_tests.to_i - florida_residents.to_i - non_residents.to_i)
+      total_tests = doc.css("div#ember82 g.responsive-text-label text")[1].text.gsub(",", "")
+      negative_tests = doc.css("div#ember96 g.responsive-text-label text")[1].text.gsub(",", "")
 
       state = State.find_or_create_by(slug: "florida") do |st|
         st.name = "Florida"
@@ -44,7 +43,6 @@ namespace :stat do
         non_residents: non_residents.to_i,
         deaths: florida_deaths.to_i,
         results_negative: negative_tests.to_i,
-        results_pending: pending_tests.to_i,
         being_monitored: being_monitored.to_i,
         last_update: Time.now()
       )
