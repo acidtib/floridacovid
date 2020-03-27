@@ -64,6 +64,7 @@ namespace '/api/v1' do
         residents: stats.deaths
       },
       "results": {
+        total: (stats.results_negative + stats.positive_residents + stats.non_residents + stats.results_pending),
         negative: stats.results_negative,
         pending: stats.results_pending
       },

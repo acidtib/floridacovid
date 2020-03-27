@@ -19,21 +19,21 @@ namespace :stat do
     driver = Selenium::WebDriver.for :chrome, options: options, http_client: http_client
     driver.navigate.to(url)
 
-    sleep(4)
+    sleep(5)
     wait = Selenium::WebDriver::Wait.new(:timout => 500)
     wait.until { driver.find_element(:css, "div.dashboard-page") }
 
     if driver.title == "Florida COVID-19 Confirmed Cases"
       doc = Nokogiri::HTML(driver.page_source)
 
-      florida_residents = doc.css("div#ember37 g.responsive-text-label text")[1].text.gsub(",", "")
-      non_residents = doc.css("div#ember44 g.responsive-text-label text")[1].text.gsub(",", "")
-      florida_deaths = doc.css("div#ember51 g.responsive-text-label text")[1].text.gsub(",", "")
-      being_monitored = doc.css("div#ember58 g.responsive-text-label text")[1].text.gsub(",", "")
+      florida_residents = doc.css("div#ember38 g.responsive-text-label text")[1].text.gsub(",", "")
+      non_residents = doc.css("div#ember64 g.responsive-text-label text")[1].text.gsub(",", "")
+      florida_deaths = doc.css("div#ember52 g.responsive-text-label text")[1].text.gsub(",", "")
+      being_monitored = doc.css("div#ember45 g.responsive-text-label text")[1].text.gsub(",", "")
 
-      total_tests = doc.css("div#ember80 g.responsive-text-label text")[1].text.gsub(",", "")
-      pending_tests = doc.css("div#ember101 g.responsive-text-label text")[1].text.gsub(",", "")
-      negative_tests = doc.css("div#ember94 g.responsive-text-label text")[1].text.gsub(",", "")
+      total_tests = doc.css("div#ember93 g.responsive-text-label text")[1].text.gsub(",", "")
+      negative_tests = doc.css("div#ember107 g.responsive-text-label text")[1].text.gsub(",", "")
+      pending_tests = (total_tests.to_i - negative_tests.to_i - florida_residents.to_i - non_residents.to_i)
 
       state = State.find_or_create_by(slug: "florida") do |st|
         st.name = "Florida"
