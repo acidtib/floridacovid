@@ -139,9 +139,9 @@ namespace '/api/v1' do
       
       {
         name: "Earth",
-        confirmed: number_with_delimiter(countries.sum(:confirmed)),
-        recovered: number_with_delimiter(countries.sum(:recovered)),
-        deaths: number_with_delimiter(countries.sum(:deaths)),
+        confirmed: countries.sum(:confirmed),
+        recovered: countries.sum(:recovered),
+        deaths: countries.sum(:deaths),
         latitude: "+90",
         longitude: "0",
         last_update: countries.first.last_update
@@ -155,10 +155,10 @@ namespace '/api/v1' do
       results = counties.map.each do |c|
         {
           name: c.name,
-          total: number_with_delimiter((c.residents + c.non_residents)),
-          residents: number_with_delimiter(c.residents),
-          non_residents: number_with_delimiter(c.non_residents),
-          deaths: number_with_delimiter(c.deaths),
+          total: (c.residents + c.non_residents),
+          residents: c.residents,
+          non_residents: c.non_residents,
+          deaths: c.deaths,
           last_update: c.last_update
         }
       end
