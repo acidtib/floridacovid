@@ -38,7 +38,7 @@ namespace :stat do
         st.name = "Florida"
       end
 
-      new_stat = state.stats.last.update(
+      state.stats.last.update(
         positive_residents: florida_residents.to_i,
         non_residents: non_residents.to_i,
         deaths: florida_deaths.to_i,
@@ -57,7 +57,7 @@ namespace :stat do
 
         recovered = features["attributes"]["Recovered"]
 
-        new_stat.update(
+        state.stats.last.update(
           recovered: recovered
         )
       end
@@ -69,7 +69,7 @@ namespace :stat do
         unless response["error"]
           features = response["features"][0]["attributes"]
 
-          new_stat.update(
+          state.stats.last.update(
             age_0_4: features["C_Age_0_4"],
             age_5_14: features["C_Age_5_14"],
             age_15_24: features["C_Age_15_24"],
