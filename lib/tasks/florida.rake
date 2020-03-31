@@ -38,7 +38,7 @@ namespace :stat do
         st.name = "Florida"
       end
 
-      new_stat = state.stats.create(
+      new_stat = state.stats.last.update(
         positive_residents: florida_residents.to_i,
         non_residents: non_residents.to_i,
         deaths: florida_deaths.to_i,

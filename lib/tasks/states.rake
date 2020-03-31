@@ -21,7 +21,7 @@ namespace :stat do
           deaths = att["Deaths"]
           last_update = Time.strptime(att["Last_Update"].to_s, '%Q') rescue nil
 
-          get_state.stats.create(
+          get_state.stats.last.update(
             positive_residents: confirmed,
             deaths: deaths,
             recovered: recovered,
