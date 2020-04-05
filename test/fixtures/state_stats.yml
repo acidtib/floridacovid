@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  state: one
+  positive_residents: 
+  positive_non_residents: 
+  deaths: 
+  results_total: 
+  results_negative: 
+  recovered: 
+  being_monitored: 
+
+two:
+  state: two
+  positive_residents: 
+  positive_non_residents: 
+  deaths: 
+  results_total: 
+  results_negative: 
+  recovered: 
+  being_monitored: 

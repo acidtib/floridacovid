@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  county: one
+  residents: 
+  non_residents: 
+  deaths: 
+
+two:
+  county: two
+  residents: 
+  non_residents: 
+  deaths: 
