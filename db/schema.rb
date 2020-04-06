@@ -10,10 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_05_200051) do
+ActiveRecord::Schema.define(version: 2020_04_06_021340) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "age_stats", force: :cascade do |t|
+    t.bigint "state_stat_id"
+    t.bigint "a_0_4"
+    t.bigint "a_5_14"
+    t.bigint "a_15_24"
+    t.bigint "a_25_34"
+    t.bigint "a_35_44"
+    t.bigint "a_45_54"
+    t.bigint "a_55_64"
+    t.bigint "a_65_74"
+    t.bigint "a_75_84"
+    t.bigint "a_85plus"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["state_stat_id"], name: "index_age_stats_on_state_stat_id"
+  end
 
   create_table "counties", force: :cascade do |t|
     t.bigint "state_id"
@@ -80,6 +97,7 @@ ActiveRecord::Schema.define(version: 2020_04_05_200051) do
     t.index ["country_id"], name: "index_states_on_country_id"
   end
 
+  add_foreign_key "age_stats", "state_stats"
   add_foreign_key "counties", "states"
   add_foreign_key "country_stats", "countries"
   add_foreign_key "county_stats", "counties"

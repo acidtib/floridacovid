@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  state_stat: one
+  a_0_4: 
+  a_5_14: 
+  a_15_24: 
+  a_25_34: 
+  a_35_44: 
+  a_45_54: 
+  a_55_64: 
+  a_65_74: 
+  a_75_84: 
+  a_85plus: 
+
+two:
+  state_stat: two
+  a_0_4: 
+  a_5_14: 
+  a_15_24: 
+  a_25_34: 
+  a_35_44: 
+  a_45_54: 
+  a_55_64: 
+  a_65_74: 
+  a_75_84: 
+  a_85plus: 
