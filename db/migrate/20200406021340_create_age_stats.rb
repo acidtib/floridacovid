@@ -1,7 +1,7 @@
 class CreateAgeStats < ActiveRecord::Migration[5.2]
   def change
     create_table :age_stats do |t|
-      t.references :state_stat, foreign_key: true
+      t.references :state, foreign_key: true
       t.bigint :a_0_4
       t.bigint :a_5_14
       t.bigint :a_15_24

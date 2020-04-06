@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2020_04_06_021340) do
   enable_extension "plpgsql"
 
   create_table "age_stats", force: :cascade do |t|
-    t.bigint "state_stat_id"
+    t.bigint "state_id"
     t.bigint "a_0_4"
     t.bigint "a_5_14"
     t.bigint "a_15_24"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2020_04_06_021340) do
     t.bigint "a_85plus"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["state_stat_id"], name: "index_age_stats_on_state_stat_id"
+    t.index ["state_id"], name: "index_age_stats_on_state_id"
   end
 
   create_table "counties", force: :cascade do |t|
@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(version: 2020_04_06_021340) do
     t.index ["country_id"], name: "index_states_on_country_id"
   end
 
-  add_foreign_key "age_stats", "state_stats"
+  add_foreign_key "age_stats", "states"
   add_foreign_key "counties", "states"
   add_foreign_key "country_stats", "countries"
   add_foreign_key "county_stats", "counties"
