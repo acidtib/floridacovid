@@ -17,11 +17,21 @@ class CountriesWorker
           co.long = att["Long_"]
         end
 
-        get_country.country_stats.create(
-          confirmed: att["Confirmed"],
-          recovered: att["Recovered"],
-          deaths: att["Deaths"]
-        )
+        last_stat = get_country.country_stats.today
+
+        if last_stat.count == 0
+          get_country.country_stats.create(
+            confirmed: att["Confirmed"],
+            recovered: att["Recovered"],
+            deaths: att["Deaths"]
+          )
+        else
+          last_stat.last.update(
+            confirmed: att["Confirmed"],
+            recovered: att["Recovered"],
+            deaths: att["Deaths"]
+          )
+        end
       end
     end
   end
