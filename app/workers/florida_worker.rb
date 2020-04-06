@@ -26,32 +26,33 @@ class FloridaWorker
     if driver.title == "Florida COVID-19 Confirmed Cases"
       doc = Nokogiri::HTML(driver.page_source)
 
-      florida_residents = doc.css("div#ember38 g.responsive-text-label text")[1].text.gsub(",", "")
-      non_residents = doc.css("div#ember153 g.responsive-text-label text")[1].text.gsub(",", "")
-      florida_deaths = doc.css("div#ember52 g.responsive-text-label text")[1].text.gsub(",", "")
-      being_monitored = doc.css("div#ember45 g.responsive-text-label text")[1].text.gsub(",", "")
-      negative_tests = doc.css("div#ember103 g.responsive-text-label text")[1].text.gsub(",", "")
+      florida_residents = doc.at('text:contains("Positive Residents")').parent.parent.parent.parent.next_element.css("g.responsive-text-label text").text.gsub(",", "").to_i
+      non_residents = doc.at('text:contains("Non-Residents")').parent.parent.parent.parent.next_element.css("g.responsive-text-label text").text.gsub(",", "").to_i
+      florida_deaths = doc.at('text:contains("Deaths")').parent.parent.parent.parent.next_element.css("g.responsive-text-label text").text.gsub(",", "").to_i
+      being_monitored = doc.at('text:contains("Hospitalizations")').parent.parent.parent.parent.next_element.css("g.responsive-text-label text").text.gsub(",", "").to_i
+      negative_tests = doc.at('text:contains("Negative")').parent.parent.parent.parent.next_element.css("g.responsive-text-label text").text.gsub(",", "").to_i
+      results_total = (florida_residents + non_residents + negative_tests)
 
       state = State.find_by_slug("florida")
       last_stat = state.state_stats.today
 
       if last_stat.count == 0
         fresh_stat = state.state_stats.create(
-          positive_residents: florida_residents.to_i,
-          positive_non_residents: non_residents.to_i,
-          deaths: florida_deaths.to_i,
-          results_total: (florida_residents.to_i + non_residents.to_i + negative_tests.to_i)
-          results_negative: negative_tests.to_i,
-          being_monitored: being_monitored.to_i
+          positive_residents: florida_residents,
+          positive_non_residents: non_residents,
+          deaths: florida_deaths,
+          results_total: results_total
+          results_negative: negative_tests,
+          being_monitored: being_monitored
         )
       else
         fresh_stat = last_stat.last.update(
-          positive_residents: florida_residents.to_i,
-          positive_non_residents: non_residents.to_i,
-          deaths: florida_deaths.to_i,
-          results_total: (florida_residents.to_i + non_residents.to_i + negative_tests.to_i)
-          results_negative: negative_tests.to_i,
-          being_monitored: being_monitored.to_i
+          positive_residents: florida_residents,
+          positive_non_residents: non_residents,
+          deaths: florida_deaths,
+          results_total: results_total
+          results_negative: negative_tests,
+          being_monitored: being_monitored
         )
       end
 
