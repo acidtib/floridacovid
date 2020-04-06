@@ -2,3 +2,8 @@ countries:
   cron: "*/30 * * * *"
   class: "CountriesWorker"
   queue: default
+
+states:
+  cron: "*/30 * * * *"
+  class: "StatesWorker"
+  queue: default
