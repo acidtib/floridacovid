@@ -41,7 +41,7 @@ class FloridaWorker
           positive_residents: florida_residents,
           positive_non_residents: non_residents,
           deaths: florida_deaths,
-          results_total: results_total
+          results_total: results_total,
           results_negative: negative_tests,
           being_monitored: being_monitored
         )
@@ -50,7 +50,7 @@ class FloridaWorker
           positive_residents: florida_residents,
           positive_non_residents: non_residents,
           deaths: florida_deaths,
-          results_total: results_total
+          results_total: results_total,
           results_negative: negative_tests,
           being_monitored: being_monitored
         )
