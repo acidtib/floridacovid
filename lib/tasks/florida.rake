@@ -26,23 +26,23 @@ namespace :stat do
     if driver.title == "Florida COVID-19 Confirmed Cases"
       doc = Nokogiri::HTML(driver.page_source)
 
-      florida_residents = doc.css("div#ember35 g.responsive-text-label text")[1].text.gsub(",", "")
-      non_residents = doc.css("div#ember158 g.responsive-text-label text")[1].text.gsub(",", "")
-      florida_deaths = doc.css("div#ember49 g.responsive-text-label text")[1].text.gsub(",", "")
-      being_monitored = doc.css("div#ember42 g.responsive-text-label text")[1].text.gsub(",", "")
-
-      negative_tests = doc.css("div#ember108 g.responsive-text-label text")[1].text.gsub(",", "")
+      florida_residents = doc.at('text:contains("Positive Residents")').parent.parent.parent.parent.next_element.css("g.responsive-text-label text").text.gsub(",", "").to_i
+      non_residents = doc.at('text:contains("Non-Residents")').parent.parent.parent.parent.next_element.css("g.responsive-text-label text").text.gsub(",", "").to_i
+      florida_deaths = doc.at('text:contains("Deaths")').parent.parent.parent.parent.next_element.css("g.responsive-text-label text").text.gsub(",", "").to_i
+      being_monitored = doc.at('text:contains("Hospitalizations")').parent.parent.parent.parent.next_element.css("g.responsive-text-label text").text.gsub(",", "").to_i
+      negative_tests = doc.at('text:contains("Negative")').parent.parent.parent.parent.next_element.css("g.responsive-text-label text").text.gsub(",", "").to_i
+      results_total = (florida_residents + non_residents + negative_tests)
 
       state = State.find_or_create_by(slug: "florida") do |st|
         st.name = "Florida"
       end
 
       state.stats.last.update(
-        positive_residents: florida_residents.to_i,
-        non_residents: non_residents.to_i,
-        deaths: florida_deaths.to_i,
-        results_negative: negative_tests.to_i,
-        being_monitored: being_monitored.to_i,
+        positive_residents: florida_residents,
+        non_residents: non_residents,
+        deaths: florida_deaths,
+        results_negative: negative_tests,
+        being_monitored: being_monitored,
         last_update: Time.now()
       )
 
