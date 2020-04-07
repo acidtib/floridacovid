@@ -36,15 +36,28 @@ namespace :stat do
       state = State.find_or_create_by(slug: "florida") do |st|
         st.name = "Florida"
       end
-
-      state.stats.last.update(
-        positive_residents: florida_residents,
-        non_residents: non_residents,
-        deaths: florida_deaths,
-        results_negative: negative_tests,
-        being_monitored: being_monitored,
-        last_update: Time.now()
-      )
+      
+      last_stat = state.stats.last
+      
+      if last_stat.nil?
+        state.stats.create(
+          positive_residents: florida_residents,
+          non_residents: non_residents,
+          deaths: florida_deaths,
+          results_negative: negative_tests,
+          being_monitored: being_monitored,
+          last_update: Time.now()
+        )
+      else
+        last_stat.update(
+          positive_residents: florida_residents,
+          non_residents: non_residents,
+          deaths: florida_deaths,
+          results_negative: negative_tests,
+          being_monitored: being_monitored,
+          last_update: Time.now()
+        )
+      end
 
       driver.quit
 
