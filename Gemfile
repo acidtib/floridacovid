@@ -41,6 +41,9 @@ gem 'httparty'
 gem 'nokogiri'
 gem 'selenium-webdriver'
 
+gem 'bootstrap', '~> 4.4.1'
+gem 'jquery-rails'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
