@@ -14,19 +14,30 @@ namespace :stat do
           st.latitude = att["Lat"]
           st.longitude = att["Long_"]
         end
+        
+        last_stat = get_state.stats.last
 
         if state_slug != "florida"
           confirmed = att["Confirmed"]
           recovered = att["Recovered"]
           deaths = att["Deaths"]
           last_update = Time.strptime(att["Last_Update"].to_s, '%Q') rescue nil
-
-          get_state.stats.last.update(
-            positive_residents: confirmed,
-            deaths: deaths,
-            recovered: recovered,
-            last_update: last_update.to_s
-          )
+          
+          if last_stat.nil?
+            get_state.stats.create(
+              positive_residents: confirmed,
+              deaths: deaths,
+              recovered: recovered,
+              last_update: last_update.to_s
+            )
+          else
+            last_stat.update(
+              positive_residents: confirmed,
+              deaths: deaths,
+              recovered: recovered,
+              last_update: last_update.to_s
+            )
+          end
         end
       end
     end
