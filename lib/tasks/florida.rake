@@ -27,11 +27,11 @@ namespace :stat do
       doc = Nokogiri::HTML(driver.page_source)
 
       florida_residents = doc.css("div#ember35 g.responsive-text-label text")[1].text.gsub(",", "")
-      non_residents = doc.css("div#ember150 g.responsive-text-label text")[1].text.gsub(",", "")
+      non_residents = doc.css("div#ember158 g.responsive-text-label text")[1].text.gsub(",", "")
       florida_deaths = doc.css("div#ember49 g.responsive-text-label text")[1].text.gsub(",", "")
       being_monitored = doc.css("div#ember42 g.responsive-text-label text")[1].text.gsub(",", "")
 
-      negative_tests = doc.css("div#ember100 g.responsive-text-label text")[1].text.gsub(",", "")
+      negative_tests = doc.css("div#ember108 g.responsive-text-label text")[1].text.gsub(",", "")
 
       state = State.find_or_create_by(slug: "florida") do |st|
         st.name = "Florida"
