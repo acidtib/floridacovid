@@ -26,6 +26,17 @@ state = country.states.create(
   long: "-81.686783"
 )
 
+county = state.counties.create(
+  name: "ALACHUA",
+  slug: "alachua"
+)
+
+county.county_stats.create(
+  residents: 40,
+  non_residents: 1,
+  deaths: 283
+)
+
 state.state_stats.create(
   positive_residents: 14065,
   positive_non_residents: 439,

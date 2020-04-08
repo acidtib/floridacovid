@@ -11,6 +11,7 @@ Rails.application.routes.draw do
         get '/earth', to: 'earth#index'
         get '/countries', to: 'countries#index'
         get '/states', to: 'states#index'
+        get '/counties', to: 'counties#index'
       end
     end
   end
