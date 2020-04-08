@@ -6,12 +6,37 @@
     
     <title>Florida COVID-19 Cases</title>
     <meta name="description" content="Florida's Positive Cases of COVID-19">
-    
+
+    <link rel="apple-touch-icon" sizes="180x180" href="<%= image_url("apple-touch-icon.png") %>">
+    <link rel="icon" type="image/png" sizes="32x32" href="<%= image_url("favicon-32x32.png") %>">
+    <link rel="icon" type="image/png" sizes="16x16" href="<%= image_url("favicon-16x16.png") %>">
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Florida COVID-19 Cases" />
+    <meta property="og:description" content="Florida's Positive Cases of COVID-19" />
+    <meta property="og:image" content="<%= image_url("og_tag.png") %>" />
+    <meta property="og:url" content="https://floridacovid.com" />
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Florida COVID-19 Cases">
+    <meta name="twitter:description" content="Florida's Positive Cases of COVID-19">
+    <meta name="twitter:image" content="<%= image_url("og_tag.png") %>">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-71796222-12"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-71796222-12');
+    </script>
   </head>
 
   <body>
