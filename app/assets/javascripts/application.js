@@ -18,4 +18,12 @@
 //= require bootstrap
 //= require chartkick
 //= require Chart.bundle
+//= require highlight
 //= require_tree .
+
+
+$(document).on("turbolinks:load", function() {
+  $('pre code').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
+});

@@ -1,0 +1,62 @@
+<div class="row mb-4 mt-5">
+  <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+    <div class="sidebar-sticky">
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            Cases
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            Counties
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            States
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            Countries
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            Earth
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="col-md-9 ml-sm-auto col-lg-10 px-4">
+    <h4>API Documentation</h4>
+    <hr>
+
+    <h5>Endpoint</h5>
+    <p>https://floridacovid.com/api/v1</p>
+
+    <div class="doc-cases">
+      <hr>
+      <h5 class="mb-0">Cases</h5>
+      <small>Return latest cases data from Florida</small>
+
+      <div class="card-deck mb-3 mt-3">
+        <div class="card mb-4 shadow-sm">
+          <div class="card-body">
+            <h6>Request:</h6>
+            <p>GET /cases</p>
+
+            <h6>Curl:</h6>
+            <pre><code class="bash">curl -X GET "https://floridacovid.com/api/v1/cases"</code></pre>
+            
+            <h6>Response:</h6>
+            <%= render "page/api/cases_response" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

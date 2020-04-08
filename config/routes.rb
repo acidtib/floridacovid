@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   end
 
   get '/counties', to: 'page#counties'
+  get '/api', to: 'page#api'
 
   root 'page#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

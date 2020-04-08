@@ -25,4 +25,8 @@ class PageController < ApplicationController
   def counties
     @counties = County.includes(:county_stats).order(:name).all
   end
+
+  def api
+    
+  end
 end
