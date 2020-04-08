@@ -19,4 +19,8 @@ class PageController < ApplicationController
       @earth_deaths += stat.deaths
     end
   end
+
+  def counties
+    @counties = County.includes(:county_stats).order(:name).all
+  end
 end

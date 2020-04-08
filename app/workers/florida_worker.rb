@@ -37,7 +37,7 @@ class FloridaWorker
       last_stat = state.state_stats.today
 
       if last_stat.count == 0
-        fresh_stat = state.state_stats.create(
+        state.state_stats.create(
           positive_residents: florida_residents,
           positive_non_residents: non_residents,
           deaths: florida_deaths,
@@ -46,7 +46,7 @@ class FloridaWorker
           being_monitored: being_monitored
         )
       else
-        fresh_stat = last_stat.last.update(
+        last_stat.last.update(
           positive_residents: florida_residents,
           positive_non_residents: non_residents,
           deaths: florida_deaths,
@@ -65,7 +65,7 @@ class FloridaWorker
 
           recovered = features["attributes"]["Recovered"]
 
-          fresh_stat.update(
+          state.state_stats.today.last.update(
             recovered: recovered
           )
         end
@@ -129,8 +129,9 @@ class FloridaWorker
             end
             
             last_county_stat = county.county_stats.today
+            puts county.inspect
             
-            if last_stat.count == 0
+            if last_county_stat.count == 0
               county.county_stats.create(
                 residents: residents,
                 non_residents: non_residents,
@@ -146,6 +147,8 @@ class FloridaWorker
           end
         end
       end
+
+      driver.quit
     else
       driver.quit
     end

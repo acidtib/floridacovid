@@ -27,7 +27,7 @@
             <%= link_to "Florida", root_url, class: "nav-link #{'active' if current_page?(root_url)}" %>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Counties</a>
+            <%= link_to "Counties", counties_path, class: "nav-link #{'active' if current_page?(counties_path)}" %>
           </li>
         </ul>
       </div>
