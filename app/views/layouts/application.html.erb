@@ -50,10 +50,13 @@
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="nav navbar-nav ml-auto">
           <li class="nav-item">
-            <%= link_to "Florida", root_url, class: "nav-link #{'active' if current_page?(root_url)}" %>
+            <%= link_to "Home", root_url, class: "nav-link #{'active' if current_page?(root_url)}" %>
           </li>
           <li class="nav-item">
             <%= link_to "Counties", counties_path, class: "nav-link #{'active' if current_page?(counties_path)}" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "API", api_path, class: "nav-link #{'active' if current_page?(api_path)}" %>
           </li>
         </ul>
       </div>
