@@ -99,17 +99,77 @@
     <canvas id="age_chart" style="position: relative; height:40vh; width:80vw"></canvas>
   </div>
 
+  <div class="col-12">
+    <h1>USA Cases</h1>
+    
+    <div class="card-deck mb-3 mt-3 text-center">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Confirmed</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title"><%= number_with_delimiter(@co_stats.confirmed) %></h1>
+        </div>
+      </div>
+
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Recovered</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title"><%= number_with_delimiter(@co_stats.recovered) %></h1>
+        </div>
+      </div>
+
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Deaths</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title"><%= number_with_delimiter(@co_stats.deaths) %></h1>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col-12">
+    <h1>Earth Cases</h1>
+    
+    <div class="card-deck mb-3 mt-3 text-center">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Confirmed</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title"><%= number_with_delimiter(@earth_confirmed) %></h1>
+        </div>
+      </div>
+
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Recovered</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title"><%= number_with_delimiter(@earth_recovered) %></h1>
+        </div>
+      </div>
+
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Deaths</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title"><%= number_with_delimiter(@earth_deaths) %></h1>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <div class="col-12 mb-1 mt-1">
-    <p class="mb-0">Updated At: 2020-04-08 03:02:01 +0000</p>
+    <p class="mb-0">Updated At: <%= @state_stats.updated_at %></p>
     <p>Data Source: <a href="https://www.arcgis.com" target="_blank">ArcGIS</a></p>
-  </div>
-  <div class="col-12 mb-2 mt-1">
-    <h4 class="mb-0">Cases Confirmed</h4>
-    <p>A Confirmed status is given when the Presumptive Positive sample is then confirmed by the CDC.</p>
-  </div>
-  <div class="col-12 mb-2 mt-1">
-    <h4 class="mb-0">Public Health Monitoring</h4>
-    <p>The number of people under public health monitoring includes those at risk of having been exposed to COVID-19 who are monitoring their health under the supervision of public health officials.</p>
   </div>
 
   <div class="col-12 mt-1">
