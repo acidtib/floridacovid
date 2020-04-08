@@ -18,7 +18,7 @@ class StatesWorker
         get_state = State.find_or_create_by(slug: state_slug) do |st|
           st.name = att["Province_State"]
           st.lat = att["Lat"]
-          st.long = att["Long_"],
+          st.long = att["Long_"]
           st.country = country
         end
 

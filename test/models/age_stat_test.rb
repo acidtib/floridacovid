@@ -11,16 +11,16 @@ end
 # Table name: age_stats
 #
 #  id         :bigint           not null, primary key
-#  a_0_4      :bigint
-#  a_15_24    :bigint
-#  a_25_34    :bigint
-#  a_35_44    :bigint
-#  a_45_54    :bigint
-#  a_55_64    :bigint
-#  a_5_14     :bigint
-#  a_65_74    :bigint
-#  a_75_84    :bigint
-#  a_85plus   :bigint
+#  a_0_4      :bigint           default("0")
+#  a_15_24    :bigint           default("0")
+#  a_25_34    :bigint           default("0")
+#  a_35_44    :bigint           default("0")
+#  a_45_54    :bigint           default("0")
+#  a_55_64    :bigint           default("0")
+#  a_5_14     :bigint           default("0")
+#  a_65_74    :bigint           default("0")
+#  a_75_84    :bigint           default("0")
+#  a_85plus   :bigint           default("0")
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  state_id   :bigint

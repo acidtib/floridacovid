@@ -17,9 +17,9 @@ two:
 # Table name: county_stats
 #
 #  id            :bigint           not null, primary key
-#  deaths        :bigint
-#  non_residents :bigint
-#  residents     :bigint
+#  deaths        :bigint           default("0")
+#  non_residents :bigint           default("0")
+#  residents     :bigint           default("0")
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  county_id     :bigint

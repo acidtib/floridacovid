@@ -17,16 +17,16 @@ ActiveRecord::Schema.define(version: 2020_04_06_021340) do
 
   create_table "age_stats", force: :cascade do |t|
     t.bigint "state_id"
-    t.bigint "a_0_4"
-    t.bigint "a_5_14"
-    t.bigint "a_15_24"
-    t.bigint "a_25_34"
-    t.bigint "a_35_44"
-    t.bigint "a_45_54"
-    t.bigint "a_55_64"
-    t.bigint "a_65_74"
-    t.bigint "a_75_84"
-    t.bigint "a_85plus"
+    t.bigint "a_0_4", default: 0
+    t.bigint "a_5_14", default: 0
+    t.bigint "a_15_24", default: 0
+    t.bigint "a_25_34", default: 0
+    t.bigint "a_35_44", default: 0
+    t.bigint "a_45_54", default: 0
+    t.bigint "a_55_64", default: 0
+    t.bigint "a_65_74", default: 0
+    t.bigint "a_75_84", default: 0
+    t.bigint "a_85plus", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["state_id"], name: "index_age_stats_on_state_id"
@@ -54,9 +54,9 @@ ActiveRecord::Schema.define(version: 2020_04_06_021340) do
 
   create_table "country_stats", force: :cascade do |t|
     t.bigint "country_id"
-    t.bigint "confirmed"
-    t.bigint "recovered"
-    t.bigint "deaths"
+    t.bigint "confirmed", default: 0
+    t.bigint "recovered", default: 0
+    t.bigint "deaths", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["country_id"], name: "index_country_stats_on_country_id"
@@ -64,9 +64,9 @@ ActiveRecord::Schema.define(version: 2020_04_06_021340) do
 
   create_table "county_stats", force: :cascade do |t|
     t.bigint "county_id"
-    t.bigint "residents"
-    t.bigint "non_residents"
-    t.bigint "deaths"
+    t.bigint "residents", default: 0
+    t.bigint "non_residents", default: 0
+    t.bigint "deaths", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["county_id"], name: "index_county_stats_on_county_id"
@@ -74,13 +74,13 @@ ActiveRecord::Schema.define(version: 2020_04_06_021340) do
 
   create_table "state_stats", force: :cascade do |t|
     t.bigint "state_id"
-    t.bigint "positive_residents"
-    t.bigint "positive_non_residents"
-    t.bigint "deaths"
-    t.bigint "results_total"
-    t.bigint "results_negative"
-    t.bigint "recovered"
-    t.bigint "being_monitored"
+    t.bigint "positive_residents", default: 0
+    t.bigint "positive_non_residents", default: 0
+    t.bigint "deaths", default: 0
+    t.bigint "results_total", default: 0
+    t.bigint "results_negative", default: 0
+    t.bigint "recovered", default: 0
+    t.bigint "being_monitored", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["state_id"], name: "index_state_stats_on_state_id"

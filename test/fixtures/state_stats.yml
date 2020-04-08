@@ -25,13 +25,13 @@ two:
 # Table name: state_stats
 #
 #  id                     :bigint           not null, primary key
-#  being_monitored        :bigint
-#  deaths                 :bigint
-#  positive_non_residents :bigint
-#  positive_residents     :bigint
-#  recovered              :bigint
-#  results_negative       :bigint
-#  results_total          :bigint
+#  being_monitored        :bigint           default("0")
+#  deaths                 :bigint           default("0")
+#  positive_non_residents :bigint           default("0")
+#  positive_residents     :bigint           default("0")
+#  recovered              :bigint           default("0")
+#  results_negative       :bigint           default("0")
+#  results_total          :bigint           default("0")
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  state_id               :bigint

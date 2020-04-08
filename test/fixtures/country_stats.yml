@@ -17,9 +17,9 @@ two:
 # Table name: country_stats
 #
 #  id         :bigint           not null, primary key
-#  confirmed  :bigint
-#  deaths     :bigint
-#  recovered  :bigint
+#  confirmed  :bigint           default("0")
+#  deaths     :bigint           default("0")
+#  recovered  :bigint           default("0")
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  country_id :bigint

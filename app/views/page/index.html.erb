@@ -1,4 +1,5 @@
 <div class="row mb-4">
+
   <div class="col-12 mt-5">
     <h1>Florida COVID-19 Cases</h1>
 
@@ -91,4 +92,104 @@
       </div>
     </div>
   </div>
+
+  <div class="col-12 mb-4 mt-1">
+    <h1>Age Distribution</h1>
+
+    <canvas id="age_chart" style="position: relative; height:40vh; width:80vw"></canvas>
+  </div>
+
+  <div class="col-12 mb-1 mt-1">
+    <p class="mb-0">Updated At: 2020-04-08 03:02:01 +0000</p>
+    <p>Data Source: <a href="https://www.arcgis.com" target="_blank">ArcGIS</a></p>
+  </div>
+  <div class="col-12 mb-2 mt-1">
+    <h4 class="mb-0">Cases Confirmed</h4>
+    <p>A Confirmed status is given when the Presumptive Positive sample is then confirmed by the CDC.</p>
+  </div>
+  <div class="col-12 mb-2 mt-1">
+    <h4 class="mb-0">Public Health Monitoring</h4>
+    <p>The number of people under public health monitoring includes those at risk of having been exposed to COVID-19 who are monitoring their health under the supervision of public health officials.</p>
+  </div>
+
+  <div class="col-12 mt-1">
+    <hr>
+    <h1>API</h1>
+    <p class="mb-0">We have a public API to retrieve the latest update from `arcgis.com`.</p>
+
+    <ul class="mt-2 pl-3">
+      <li class="mb-2">
+        <h6 class="mb-0">Returns case data from Florida</h6>
+        <a href="https://floridacovid.com/api/v1/cases" target="_blank">https://floridacovid.com/api/v1/cases</a>
+      </li>
+      <li class="mb-2">
+        <h6 class="mb-0">Returns case data from Florida Counties</h6>
+        <a href="https://floridacovid.com/api/v1/cases/counties" target="_blank">https://floridacovid.com/api/v1/cases/counties</a>
+      </li>
+      <li class="mb-2">
+        <h6 class="mb-0">Returns case data from States</h6>
+        <a href="https://floridacovid.com/api/v1/cases/states" target="_blank">https://floridacovid.com/api/v1/cases/states</a>
+      </li>
+      <li class="mb-2">
+        <h6 class="mb-0">Returns case data from Countries</h6>
+        <a href="https://floridacovid.com/api/v1/cases/countries" target="_blank">https://floridacovid.com/api/v1/cases/countries</a>
+      </li>
+      <li class="mb-2">
+        <h6 class="mb-0">Returns case data from Earth</h6>
+        <a href="https://floridacovid.com/api/v1/cases/earth" target="_blank">https://floridacovid.com/api/v1/cases/earth</a>
+      </li>
+    </ul>
+  </div>
+
 </div>
+
+
+<script>
+var age_chart = document.getElementById('age_chart').getContext('2d');
+new Chart(age_chart, {
+    type: 'bar',
+    data: {
+        labels: ['0-4', '5-14', '15-24', '25-34', '35-44', '45-54', '55-64', '65-74', '75-84', '80+'],
+        datasets: [{
+            data: [<%= @ages.a_0_4 %>, <%= @ages.a_5_14 %>, <%= @ages.a_15_24 %>, <%= @ages.a_25_34 %>, <%= @ages.a_35_44 %>, <%= @ages.a_45_54 %>, <%= @ages.a_55_64 %>, <%= @ages.a_65_74 %>, <%= @ages.a_75_84 %>, <%= @ages.a_85plus %>],
+            backgroundColor: [
+                'rgb(206, 164, 100)', //, 0.2
+                'rgb(255, 0, 0)',
+                'rgb(205, 207, 107)',
+                'rgb(169, 255, 1)',
+                'rgb(85, 255, 0)',
+                'rgb(6, 255, 197)',
+                'rgb(1, 197, 255)',
+                'rgb(0, 112, 255)',
+                'rgb(180, 97, 208)',
+                'rgb(210, 99, 178)'
+            ],
+            borderColor: [
+                'rgba(206, 164, 100, 1)', //, 1
+                'rgb(255, 0, 0, 1)',
+                'rgba(205, 207, 107, 1)',
+                'rgb(169, 255, 1)',
+                'rgb(85, 255, 0)',
+                'rgb(6, 255, 197)',
+                'rgb(1, 197, 255)',
+                'rgb(0, 112, 255)',
+                'rgb(180, 97, 208)',
+                'rgb(210, 99, 178)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+      legend: {
+        display: false,
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+});
+</script>

@@ -13,6 +13,12 @@ country = Country.create(
   long: "-100"
 )
 
+country.country_stats.create(
+  confirmed: 14065,
+  recovered: 439,
+  deaths: 283
+)
+
 state = country.states.create(
   name: "Florida",
   slug: "florida",
