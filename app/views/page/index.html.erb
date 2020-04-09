@@ -1,0 +1,268 @@
+<div class="row mb-4 mt-5">
+
+  <div class="col-12">
+    <h1>Florida COVID-19 Cases</h1>
+
+    <div class="card-deck mb-3 mt-3 text-center">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Total</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title"><%= number_with_delimiter((@state_stats.positive_residents + @state_stats.positive_non_residents)) %></h1>
+        </div>
+      </div>
+
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Residents</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title"><%= number_with_delimiter(@state_stats.positive_residents) %></h1>
+        </div>
+      </div>
+
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Non-Resident</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title"><%= number_with_delimiter(@state_stats.positive_non_residents) %></h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 mb-4 mt-1">
+    <%= line_chart api_v1_charts_cases_path %>
+  </div>
+
+  <div class="col-12">
+    <h1>Health Monitoring</h1>
+
+    <div class="card-deck mb-3 mt-3 text-center">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Hospitalized</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title"><%= number_with_delimiter(@state_stats.being_monitored) %></h1>
+        </div>
+      </div>
+
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Recovered</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title"><%= number_with_delimiter(@state_stats.recovered) %></h1>
+        </div>
+      </div>
+
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Deaths</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title"><%= number_with_delimiter(@state_stats.deaths) %></h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12">
+    <h1>Test Results</h1>
+
+    <div class="card-deck mb-3 mt-3 text-center">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Total</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title"><%= number_with_delimiter(@state_stats.results_total) %></h1>
+        </div>
+      </div>
+
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Negative</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title"><%= number_with_delimiter(@state_stats.results_negative) %></h1>
+        </div>
+      </div>
+
+      <div class="card mb-4 stat-card not-here">
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12">
+    <h1>Cases by County</h1>
+    
+    <div class="card-deck mb-3 mt-3 text-center">
+      <div class="card shadow-sm">
+        <div class="table-responsive">
+          <table class="table mb-0">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Total</th>
+                <th scope="col">Residents</th>
+                <th scope="col">Non-Residents</th>
+                <th scope="col">Deaths</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @counties.each do |county| @stat = county.county_stats.last %>
+                <tr>
+                  <th scope="row"><%= county.name %></th>
+                  <td><%= number_with_delimiter(@stat.residents + @stat.non_residents) %></td>
+                  <td><%= number_with_delimiter(@stat.residents) %></td>
+                  <td><%= number_with_delimiter(@stat.non_residents) %></td>
+                  <td><%= number_with_delimiter(@stat.deaths) %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="pb-2">
+          <hr class="mt-0 mb-2">
+          <%= link_to "Click to View all Counties", counties_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 mb-4 mt-3">
+    <h1 class="mb-3">Age Distribution</h1>
+
+    <canvas id="age_chart" style="position: relative; height:40vh; width:80vw"></canvas>
+  </div>
+
+  <div class="col-12">
+    <h1>USA Cases</h1>
+    
+    <div class="card-deck mb-3 mt-3 text-center">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Confirmed</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title"><%= number_with_delimiter(@co_stats.confirmed) %></h1>
+        </div>
+      </div>
+
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Recovered</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title"><%= number_with_delimiter(@co_stats.recovered) %></h1>
+        </div>
+      </div>
+
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Deaths</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title"><%= number_with_delimiter(@co_stats.deaths) %></h1>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col-12">
+    <h1>Earth Cases</h1>
+    
+    <div class="card-deck mb-3 mt-3 text-center">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Confirmed</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title"><%= number_with_delimiter(@earth_confirmed) %></h1>
+        </div>
+      </div>
+
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Recovered</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title"><%= number_with_delimiter(@earth_recovered) %></h1>
+        </div>
+      </div>
+
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Deaths</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title"><%= number_with_delimiter(@earth_deaths) %></h1>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col-12 mb-1 mt-1">
+    <p class="mb-0">Updated At: <%= @state_stats.updated_at %></p>
+    <p>Data Source: <a href="https://www.arcgis.com" target="_blank">ArcGIS</a></p>
+  </div>
+
+</div>
+
+
+<script>
+var age_chart = document.getElementById('age_chart').getContext('2d');
+new Chart(age_chart, {
+    type: 'bar',
+    data: {
+        labels: ['0-4', '5-14', '15-24', '25-34', '35-44', '45-54', '55-64', '65-74', '75-84', '80+'],
+        datasets: [{
+            data: [<%= @ages.a_0_4 %>, <%= @ages.a_5_14 %>, <%= @ages.a_15_24 %>, <%= @ages.a_25_34 %>, <%= @ages.a_35_44 %>, <%= @ages.a_45_54 %>, <%= @ages.a_55_64 %>, <%= @ages.a_65_74 %>, <%= @ages.a_75_84 %>, <%= @ages.a_85plus %>],
+            backgroundColor: [
+                'rgb(206, 164, 100)', //, 0.2
+                'rgb(255, 0, 0)',
+                'rgb(205, 207, 107)',
+                'rgb(169, 255, 1)',
+                'rgb(85, 255, 0)',
+                'rgb(6, 255, 197)',
+                'rgb(1, 197, 255)',
+                'rgb(0, 112, 255)',
+                'rgb(180, 97, 208)',
+                'rgb(210, 99, 178)'
+            ],
+            borderColor: [
+                'rgba(206, 164, 100, 1)', //, 1
+                'rgb(255, 0, 0, 1)',
+                'rgba(205, 207, 107, 1)',
+                'rgb(169, 255, 1)',
+                'rgb(85, 255, 0)',
+                'rgb(6, 255, 197)',
+                'rgb(1, 197, 255)',
+                'rgb(0, 112, 255)',
+                'rgb(180, 97, 208)',
+                'rgb(210, 99, 178)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+      legend: {
+        display: false,
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+});
+</script>

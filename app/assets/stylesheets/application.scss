@@ -1,0 +1,15 @@
+@import "bootstrap";
+@import "highlight";
+
+main {
+  padding: 3rem 1.5rem;
+}
+
+.not-here {
+  border: none;
+  background: transparent;
+}
+
+.sticky-offset {
+  top: 87px;
+}

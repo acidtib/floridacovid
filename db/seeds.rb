@@ -1,49 +1,61 @@
-state = State.create(
-  name: "Florida",
-  slug: "florida",
-  latitude: "27.766279", 
-  longitude: "-81.686783"
-)
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
+#
+# Examples:
+#
+#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+#   Character.create(name: 'Luke', movie: movies.first)
 
-state.stats.create(
-  positive_residents: 1330, 
-  cases_repatriated: nil, 
-  non_residents: 82, 
-  deaths: 18, 
-  results_negative: 13127, 
-  results_pending: 1008, 
-  being_monitored: 1249, 
-  total_monitored: nil, 
-  recovered: 0, 
-  last_update: "2020-03-24 16:45:50 +0000", 
-  age_0_4: 2,
-  age_5_14: 9, 
-  age_15_24: 47, 
-  age_25_34: 188, 
-  age_35_44: 196, 
-  age_45_54: 204, 
-  age_55_64: 247, 
-  age_65_74: 249, 
-  age_75_84: 178, 
-  age_85plus: 93
-)
-
-state.counties.create(
-  name: "ALACHUA",
-  slug: "alachua",
-  residents: 34,
-  non_residents: 3,
-  deaths: 0,
-  last_update: "2020-03-24 16:45:50 +0000", 
-)
-
-Country.create(
+country = Country.create(
   name: "US",
   slug: "us",
-  confirmed: 46805, 
-  recovered: 0, 
-  deaths: 593, 
-  last_update: "2020-03-24 16:04:17", 
-  latitude: "40", 
-  longitude: "-100"
+  lat: "40", 
+  long: "-100"
+)
+
+country.country_stats.create(
+  confirmed: 14065,
+  recovered: 439,
+  deaths: 283
+)
+
+state = country.states.create(
+  name: "Florida",
+  slug: "florida",
+  lat: "27.766279", 
+  long: "-81.686783"
+)
+
+county = state.counties.create(
+  name: "ALACHUA",
+  slug: "alachua"
+)
+
+county.county_stats.create(
+  residents: 40,
+  non_residents: 1,
+  deaths: 283
+)
+
+state.state_stats.create(
+  positive_residents: 14065,
+  positive_non_residents: 439,
+  deaths: 283,
+  results_total: 138618,
+  results_negative: 122792,
+  recovered: 0,
+  being_monitored: 1777
+)
+
+state.age_stats.create(
+  a_0_4: 60,
+  a_5_14: 97,
+  a_15_24: 1044,
+  a_25_34: 2270,
+  a_35_44: 2227,
+  a_45_54: 2639,
+  a_55_64: 2531,
+  a_65_74: 2029,
+  a_75_84: 1168,
+  a_85plus: 421
 )

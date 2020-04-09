@@ -1,0 +1,150 @@
+<div class="row mb-4 mt-5">
+  <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+    <div class="sticky-top sticky-offset">
+      <ul class="nav flex-column mt-3">
+        <li class="nav-item">
+          <a class="nav-link scroll_to" href=".doc-cases">
+            Cases
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link scroll_to" href=".doc-counties">
+            Counties
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link scroll_to" href=".doc-states">
+            States
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link scroll_to" href=".doc-countries">
+            Countries
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link scroll_to" href=".doc-earth">
+            Earth
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="col-md-9 ml-sm-auto col-lg-10 px-4">
+    <h4>API Documentation</h4>
+    <hr>
+
+    <h5>Endpoint</h5>
+    <p>https://floridacovid.com/api/v1</p>
+
+    <div class="doc-cases">
+      <hr class="mb-5">
+      <h5 class="mb-0">Cases</h5>
+      <small>Return latest cases data from Florida</small>
+
+      <div class="card-deck mb-3 mt-3">
+        <div class="card mb-4 shadow-sm">
+          <div class="card-body">
+            <h6>Request:</h6>
+            <p>GET /cases</p>
+
+            <h6>Curl:</h6>
+            <pre><code class="bash">curl -X GET "https://floridacovid.com/api/v1/cases"</code></pre>
+            
+            <h6>Response:</h6>
+            <%= render "page/api/cases_response" %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="mb-5">
+
+    <div class="doc-counties mt-3">
+      <h5 class="mb-0">Counties</h5>
+      <small>Return latest cases data from Florida Counties</small>
+
+      <div class="card-deck mb-3 mt-3">
+        <div class="card mb-4 shadow-sm">
+          <div class="card-body">
+            <h6>Request:</h6>
+            <p>GET /cases/counties</p>
+
+            <h6>Curl:</h6>
+            <pre><code class="bash">curl -X GET "https://floridacovid.com/api/v1/cases/counties"</code></pre>
+            
+            <h6>Response:</h6>
+            <%= render "page/api/counties_response" %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="mb-5">
+
+    <div class="doc-states mt-3">
+      <h5 class="mb-0">States</h5>
+      <small>Return latest cases data from US States</small>
+
+      <div class="card-deck mb-3 mt-3">
+        <div class="card mb-4 shadow-sm">
+          <div class="card-body">
+            <h6>Request:</h6>
+            <p>GET /cases/states</p>
+
+            <h6>Curl:</h6>
+            <pre><code class="bash">curl -X GET "https://floridacovid.com/api/v1/cases/states"</code></pre>
+            
+            <h6>Response:</h6>
+            <%= render "page/api/states_response" %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="mb-5">
+
+    <div class="doc-countries mt-3">
+      <h5 class="mb-0">Countries</h5>
+      <small>Return latest cases data from all Countries</small>
+
+      <div class="card-deck mb-3 mt-3">
+        <div class="card mb-4 shadow-sm">
+          <div class="card-body">
+            <h6>Request:</h6>
+            <p>GET /cases/countries</p>
+
+            <h6>Curl:</h6>
+            <pre><code class="bash">curl -X GET "https://floridacovid.com/api/v1/cases/countries"</code></pre>
+            
+            <h6>Response:</h6>
+            <%= render "page/api/countries_response" %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="mb-5">
+
+    <div class="doc-earth mt-3">
+      <h5 class="mb-0">Earth</h5>
+      <small>Return latest cases data from Earth</small>
+
+      <div class="card-deck mb-3 mt-3">
+        <div class="card mb-4 shadow-sm">
+          <div class="card-body">
+            <h6>Request:</h6>
+            <p>GET /cases/earth</p>
+
+            <h6>Curl:</h6>
+            <pre><code class="bash">curl -X GET "https://floridacovid.com/api/v1/cases/earth"</code></pre>
+            
+            <h6>Response:</h6>
+            <%= render "page/api/earth_response" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

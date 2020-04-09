@@ -1,21 +1,6 @@
-require 'sinatra/activerecord'
-require 'sinatra/activerecord/rake'
+# Add your own tasks in files placed in lib/tasks ending in .rake,
+# for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
 
-self.instance_eval do
-  alias :namespace_pre_sinatra :namespace if self.respond_to?(:namespace, true)
-end
-require 'sinatra/namespace'
-self.instance_eval do
-  alias :namespace :namespace_pre_sinatra if self.respond_to?(:namespace_pre_sinatra, true)
-end
+require_relative 'config/application'
 
-require './app'
-
-require 'open-uri'
-require 'nokogiri'
-require 'httparty'
-require 'json'
-require 'pp'
-require 'date'
-
-Dir.glob('./lib/tasks/*.rake').each { |r| import r }
+Rails.application.load_tasks

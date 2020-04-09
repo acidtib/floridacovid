@@ -1,0 +1,34 @@
+<div class="row mb-4 mt-5">
+  <div class="col-12">
+    <h1>Cases by County</h1>
+    
+    <div class="card-deck mb-3 mt-3 text-center">
+      <div class="card shadow-sm">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Total</th>
+                <th scope="col">Residents</th>
+                <th scope="col">Non-Residents</th>
+                <th scope="col">Deaths</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @counties.each do |county| @stat = county.county_stats.last %>
+                <tr>
+                  <th scope="row"><%= county.name %></th>
+                  <td><%= number_with_delimiter(@stat.residents + @stat.non_residents) %></td>
+                  <td><%= number_with_delimiter(@stat.residents) %></td>
+                  <td><%= number_with_delimiter(@stat.non_residents) %></td>
+                  <td><%= number_with_delimiter(@stat.deaths) %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
