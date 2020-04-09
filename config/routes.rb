@@ -15,7 +15,7 @@ Rails.application.routes.draw do
       end
 
       scope "/charts" do
-        get '/cases', to: 'charts#cases'
+        get '/cases', to: 'charts#cases', as: 'charts_cases'
       end
     end
   end

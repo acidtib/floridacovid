@@ -8,22 +8,21 @@ module Api
         date_from = stats.first.created_at.to_date
         date_to = stats.last.created_at.to_date
         date_range = date_from..date_to
+        total_per_day = []
 
-        puts date_range
-
-        date_months = date_range.map {|d| Date.new(d.year, d.month, d.day) }.uniq.map do |date|
-          stat = state.state_stats.find_by_created_at(date.midnight..date.end_of_day)
-          puts date
-          puts stat.inspect
-          {
-            # date => stat.positive_residents
-          }
+        date_range.map {|d| Date.new(d.year, d.month, d.day) }.uniq.each do |d|
+          stat = state.state_stats.where(created_at: d.midnight..d.end_of_day).last
+          
+          if stat
+            total_per_day.push([ d, stat.positive_residents ])
+          end
         end
 
-        puts date_months
-
-        # render json: date_months.reduce({}, :merge)
-        render json: {}, status: 200
+        result = [
+          {name: "Total Per Day", data: total_per_day, color: "#e64c00"}
+        ]
+        
+        render json: result, status: 200
       end
     end
   end
