@@ -9,7 +9,6 @@ class FloridaWorker
     options.add_argument('--disable-popup-blocking')
     options.add_argument('--disable-translate')
 
-    
     Selenium::WebDriver::Chrome.path = ENV.fetch('GOOGLE_CHROME_SHIM', nil) if ENV["GOOGLE_CHROME_SHIM"]
 
     http_client = Selenium::WebDriver::Remote::Http::Default.new
