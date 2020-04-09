@@ -44,6 +44,7 @@ gem 'selenium-webdriver'
 gem 'bootstrap', '~> 4.4.1'
 gem 'jquery-rails'
 gem 'chartkick'
+gem 'groupdate'
 
 gem 'rack-cors'
 

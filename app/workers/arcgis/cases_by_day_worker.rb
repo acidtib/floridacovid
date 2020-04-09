@@ -43,7 +43,7 @@ class Arcgis::CasesByDayWorker
             updated_at: date
           )
         end
-      end 
+      end
 
     end
   end

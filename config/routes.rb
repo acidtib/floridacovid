@@ -13,6 +13,10 @@ Rails.application.routes.draw do
         get '/states', to: 'states#index'
         get '/counties', to: 'counties#index'
       end
+
+      scope "/charts" do
+        get '/cases', to: 'charts#cases'
+      end
     end
   end
 

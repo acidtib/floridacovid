@@ -3,6 +3,8 @@ class PageController < ApplicationController
     @state = State.includes(:state_stats).find_by_slug("florida")
     @state_stats = @state.state_stats.last
     @ages = @state.age_stats.last
+
+    @stats_chart = @state.state_stats.group_by_day(:created_at).count
     
     @countries = Country.includes(:country_stats).all
     @co_stats = @countries.find_by_slug("us").country_stats.last
