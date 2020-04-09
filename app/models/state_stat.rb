@@ -4,6 +4,10 @@ class StateStat < ApplicationRecord
   def self.today
     where(created_at: Time.zone.today.all_day)
   end
+
+  def self.yesterday
+    where(created_at: Time.zone.yesterday.all_day)
+  end
 end
 
 # == Schema Information

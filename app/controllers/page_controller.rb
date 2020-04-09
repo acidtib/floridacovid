@@ -1,7 +1,8 @@
 class PageController < ApplicationController
   def index
     @state = State.includes(:state_stats).find_by_slug("florida")
-    @state_stats = @state.state_stats.last
+    @state_stats = @state.state_stats.today.last
+    @state_stats_yesterday = @state.state_stats.yesterday.last
     @ages = @state.age_stats.last
 
     @countries = Country.includes(:country_stats).all
