@@ -13,6 +13,7 @@ class FloridaWorker
 
     http_client = Selenium::WebDriver::Remote::Http::Default.new
     http_client.read_timeout = 120
+    
     driver = Selenium::WebDriver.for :chrome, options: options, http_client: http_client
     driver.navigate.to(url)
 
