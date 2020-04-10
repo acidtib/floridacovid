@@ -6,7 +6,7 @@ class PageController < ApplicationController
       @state_stats_yesterday = @state.state_stats.yesterday.last
     else
       @state_stats = @state.state_stats.yesterday.last
-      @state_stats_yesterday = @state.state_stats.where(created_at: (Time.zone.yesterday - 24.hours).all_day)
+      @state_stats_yesterday = @state.state_stats.where(created_at: (Time.zone.yesterday - 24.hours).all_day).last
     end
     @ages = @state.age_stats.last
 
