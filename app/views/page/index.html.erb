@@ -9,7 +9,7 @@
           <h4 class="my-0 font-weight-normal">Total</h4>
         </div>
         <div class="card-body">
-          <h1 class="card-title"><%= number_with_delimiter((@state_stats.positive_residents + @state_stats.positive_non_residents)) %> <small style="display: block; font-size: 19px; text-align: end; color: red;">+<%= ((@state_stats.positive_residents + @state_stats.positive_non_residents) - (@state_stats_yesterday.positive_residents + @state_stats_yesterday.positive_non_residents)) %></small></h1>
+          <h1 class="card-title"><%= number_with_delimiter((@state_stats.positive_residents + @state_stats.positive_non_residents)) %> <small style="display: block; font-size: 19px; text-align: end; color: red;" >+<%= ((@state_stats.positive_residents + @state_stats.positive_non_residents) - (@state_stats_yesterday.positive_residents + @state_stats_yesterday.positive_non_residents)) %> <%= octicon "question", :style => "cursor: pointer;", :height => 19, :"aria-label" => "question", :"data-toggle" => "tooltip", :"data-placement" => "bottom", :title => "Total New Cases Since Yesterday" %></small></h1>
         </div>
       </div>
 
@@ -18,7 +18,7 @@
           <h4 class="my-0 font-weight-normal">Residents</h4>
         </div>
         <div class="card-body">
-          <h1 class="card-title"><%= number_with_delimiter(@state_stats.positive_residents) %> <small style="display: block; font-size: 19px; text-align: end; color: red;">+<%= (@state_stats.positive_residents - @state_stats_yesterday.positive_residents) %></small></h1>
+          <h1 class="card-title"><%= number_with_delimiter(@state_stats.positive_residents) %> <small style="display: block; font-size: 19px; text-align: end; color: red;">+<%= (@state_stats.positive_residents - @state_stats_yesterday.positive_residents) %> <%= octicon "question", :style => "cursor: pointer;", :height => 19, :"aria-label" => "question", :"data-toggle" => "tooltip", :"data-placement" => "bottom", :title => "New Positive Residents Since Yesterday" %></small></h1>
         </div>
       </div>
 
@@ -27,7 +27,7 @@
           <h4 class="my-0 font-weight-normal">Non-Resident</h4>
         </div>
         <div class="card-body">
-          <h1 class="card-title"><%= number_with_delimiter(@state_stats.positive_non_residents) %> <small style="display: block; font-size: 19px; text-align: end; color: red;">+<%= (@state_stats.positive_non_residents - @state_stats_yesterday.positive_non_residents) %></small></h1>
+          <h1 class="card-title"><%= number_with_delimiter(@state_stats.positive_non_residents) %> <small style="display: block; font-size: 19px; text-align: end; color: red;">+<%= (@state_stats.positive_non_residents - @state_stats_yesterday.positive_non_residents) %> <%= octicon "question", :style => "cursor: pointer;", :height => 19, :"aria-label" => "question", :"data-toggle" => "tooltip", :"data-placement" => "bottom", :title => "New Positive Non-Residents Since Yesterday" %></small></h1>
         </div>
       </div>
     </div>

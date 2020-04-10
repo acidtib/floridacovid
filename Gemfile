@@ -42,6 +42,7 @@ gem 'nokogiri'
 gem 'selenium-webdriver'
 
 gem 'bootstrap', '~> 4.4.1'
+gem 'octicons_helper'
 gem 'jquery-rails'
 gem 'chartkick'
 gem 'groupdate'
