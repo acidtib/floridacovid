@@ -2,7 +2,12 @@ class PageController < ApplicationController
   def index
     @state = State.includes(:state_stats).find_by_slug("florida")
     @state_stats = @state.state_stats.today.last
-    @state_stats_yesterday = @state.state_stats.yesterday.last
+    if @state_stats
+      @state_stats_yesterday = @state.state_stats.yesterday.last
+    else
+      @state_stats = @state.state_stats.yesterday.last
+      @state_stats_yesterday = @state.state_stats.where(created_at: (Time.zone.yesterday - 24.hours).all_day)
+    end
     @ages = @state.age_stats.last
 
     @countries = Country.includes(:country_stats).all
