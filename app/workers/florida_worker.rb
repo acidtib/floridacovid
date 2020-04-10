@@ -35,14 +35,16 @@ class FloridaWorker
       last_stat = state.state_stats.today
 
       if last_stat.count == 0
-        state.state_stats.create(
-          positive_residents: florida_residents,
-          positive_non_residents: non_residents,
-          deaths: florida_deaths,
-          results_total: results_total,
-          results_negative: negative_tests,
-          being_monitored: being_monitored
-        )
+        if last_stat.positive_residents != florida_residents
+          state.state_stats.create(
+            positive_residents: florida_residents,
+            positive_non_residents: non_residents,
+            deaths: florida_deaths,
+            results_total: results_total,
+            results_negative: negative_tests,
+            being_monitored: being_monitored
+          )
+        end
       else
         last_stat.last.update(
           positive_residents: florida_residents,
