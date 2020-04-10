@@ -35,7 +35,7 @@ class FloridaWorker
       last_stat = state.state_stats.today
 
       if last_stat.count == 0
-        if last_stat.positive_residents != florida_residents
+        if state.state_stats.yesterday.last.positive_residents != florida_residents
           state.state_stats.create(
             positive_residents: florida_residents,
             positive_non_residents: non_residents,
