@@ -29,7 +29,7 @@ class PageController < ApplicationController
   end
 
   def counties
-    @counties = County.includes(:county_stats).order(:name).all
+    @counties = County.includes(:county_stats).order("county_stats.residents desc").all
   end
 
   def api
