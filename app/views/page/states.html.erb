@@ -1,6 +1,6 @@
 <div class="row mb-4 mt-5">
   <div class="col-12">
-    <h1>Cases by County</h1>
+    <h1>Cases by States</h1>
     
     <div class="card-deck mb-3 mt-3 text-center">
       <div class="card shadow-sm">
@@ -9,19 +9,15 @@
             <thead>
               <tr>
                 <th scope="col"></th>
-                <th scope="col">Total</th>
                 <th scope="col">Residents</th>
-                <th scope="col">Non-Residents</th>
                 <th scope="col">Deaths</th>
               </tr>
             </thead>
             <tbody>
-              <% @counties.each do |county| @stat = county.county_stats.first %>
+              <% @states.each do |state| @stat = state.state_stats.first %>
                 <tr>
-                  <th scope="row"><%= county.name %></th>
-                  <td><%= number_with_delimiter(@stat.residents + @stat.non_residents) %></td>
-                  <td><%= number_with_delimiter(@stat.residents) %></td>
-                  <td><%= number_with_delimiter(@stat.non_residents) %></td>
+                  <th scope="row"><%= state.name %></th>
+                  <td><%= number_with_delimiter(@stat.positive_residents) %></td>
                   <td><%= number_with_delimiter(@stat.deaths) %></td>
                 </tr>
               <% end %>

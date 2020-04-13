@@ -32,6 +32,10 @@ class PageController < ApplicationController
     @counties = County.includes(:county_stats).order("county_stats.residents desc").all
   end
 
+  def states
+    @states = State.includes(:state_stats).order("state_stats.positive_residents desc").all
+  end
+
   def api
     
   end
