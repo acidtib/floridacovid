@@ -114,7 +114,7 @@
               </tr>
             </thead>
             <tbody>
-              <% @counties.each do |county| @stat = county.county_stats.last %>
+              <% @counties.each do |county| @stat = county.county_stats.first %>
                 <tr>
                   <th scope="row"><%= county.name %></th>
                   <td><%= number_with_delimiter(@stat.residents + @stat.non_residents) %></td>
