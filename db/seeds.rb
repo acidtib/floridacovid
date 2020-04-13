@@ -44,7 +44,19 @@ state.state_stats.create(
   results_total: 138618,
   results_negative: 122792,
   recovered: 0,
-  being_monitored: 1777
+  being_monitored: 1777,
+  created_at: "2020-04-12 03:00:20.412129"
+)
+
+state.state_stats.create(
+  positive_residents: 12000,
+  positive_non_residents: 300,
+  deaths: 200,
+  results_total: 108618,
+  results_negative: 102792,
+  recovered: 0,
+  being_monitored: 777,
+  created_at: "2020-04-11 03:00:20.412129"
 )
 
 state.age_stats.create(

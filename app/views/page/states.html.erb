@@ -1,5 +1,38 @@
 <div class="row mb-4 mt-5">
   <div class="col-12">
+    <h1>Cases in United States</h1>
+
+    <div class="card-deck mb-3 mt-3 text-center">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Confirmed</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title"><%= @country_stats.confirmed %> <small style="display: block; font-size: 19px; text-align: end; color: red;">+<%= (@country_stats.confirmed - @country_stats_yesterday.confirmed) %> <span style="color: #212529;">24hrs</span></small></h1>
+        </div>
+      </div>
+
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Recovered</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title"><%= @country_stats.recovered %>  <small style="display: block; font-size: 19px; text-align: end; color: red;">+<%= (@country_stats.recovered - @country_stats_yesterday.recovered) %> <span style="color: #212529;">24hrs</span></small></h1>
+        </div>
+      </div>
+
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Deaths</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title"><%= @country_stats.deaths %>  <small style="display: block; font-size: 19px; text-align: end; color: red;">+<%= (@country_stats.deaths - @country_stats_yesterday.deaths) %> <span style="color: #212529;">24hrs</span></small></h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12">
     <h1>Cases by States</h1>
     
     <div class="card-deck mb-3 mt-3 text-center">
