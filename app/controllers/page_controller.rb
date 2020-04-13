@@ -33,6 +33,10 @@ class PageController < ApplicationController
   end
 
   def states
+    @country = Country.includes(:country_stats).find_by_slug("us")
+    @country_stats = @country.country_stats.today.last
+    @country_stats_yesterday = @country.country_stats.yesterday.last
+
     @states = State.includes(:state_stats).order("state_stats.positive_residents desc").all
   end
 
