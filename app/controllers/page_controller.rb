@@ -40,6 +40,33 @@ class PageController < ApplicationController
     @states = State.includes(:state_stats).order("state_stats.positive_residents desc").all
   end
 
+  def earth
+    @countries = Country.includes(:country_stats).order("country_stats.confirmed desc").all
+    @country_stats = {
+      today: {
+        confirmed: 0,
+        recovered: 0,
+        deaths: 0
+      },
+      yesterday: {
+        confirmed: 0,
+        recovered: 0,
+        deaths: 0
+      }
+    }
+    @countries.each do |c|
+      stat = c.country_stats.today.last
+      stat_yesterday = c.country_stats.yesterday.last
+
+      @country_stats[:today][:confirmed] += stat.confirmed
+      @country_stats[:today][:recovered] += stat.recovered
+      @country_stats[:today][:deaths] += stat.deaths
+      @country_stats[:yesterday][:confirmed] += stat_yesterday.confirmed
+      @country_stats[:yesterday][:recovered] += stat_yesterday.recovered
+      @country_stats[:yesterday][:deaths] += stat_yesterday.deaths
+    end
+  end
+
   def api
     
   end

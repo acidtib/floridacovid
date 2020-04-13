@@ -1,0 +1,63 @@
+<div class="row mb-4 mt-5">
+  <div class="col-12">
+    <div class="card-deck mb-3 mt-3 text-center">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Confirmed</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title"><%= number_with_delimiter(@country_stats[:today][:confirmed]) %> <small style="display: block; font-size: 19px; text-align: end; color: red;">+<%= number_with_delimiter((@country_stats[:today][:confirmed] - @country_stats[:yesterday][:confirmed])) %> <span style="color: #212529;">24hrs</span></small></h1>
+        </div>
+      </div>
+
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Recovered</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title"><%= number_with_delimiter(@country_stats[:today][:recovered]) %> <small style="display: block; font-size: 19px; text-align: end; color: red;">+<%= number_with_delimiter((@country_stats[:today][:recovered] - @country_stats[:yesterday][:recovered])) %> <span style="color: #212529;">24hrs</span></small></h1>
+        </div>
+      </div>
+
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Deaths</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title"><%= number_with_delimiter(@country_stats[:today][:deaths]) %> <small style="display: block; font-size: 19px; text-align: end; color: red;">+<%= number_with_delimiter((@country_stats[:today][:deaths] - @country_stats[:yesterday][:deaths])) %> <span style="color: #212529;">24hrs</span></small></h1>        
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12">
+    <h1>Cases by Countries</h1>
+    
+    <div class="card-deck mb-3 mt-3 text-center">
+      <div class="card shadow-sm">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Confirmed</th>
+                <th scope="col">Recovered</th>
+                <th scope="col">Deaths</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @countries.each do |country| @stat = country.country_stats.first %>
+                <tr>
+                  <th scope="row"><%= country.name %></th>
+                  <td><%= number_with_delimiter(@stat.confirmed) %></td>
+                  <td><%= number_with_delimiter(@stat.recovered) %></td>
+                  <td><%= number_with_delimiter(@stat.deaths) %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

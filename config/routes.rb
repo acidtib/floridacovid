@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
   get '/counties', to: 'page#counties'
   get '/united-states', to: 'page#states'
+  get '/earth', to: 'page#earth'
   get '/api', to: 'page#api'
 
   root 'page#index'
