@@ -8,6 +8,7 @@ class FloridaWorker
     options.add_argument('--ignore-certificate-errors')
     options.add_argument('--disable-popup-blocking')
     options.add_argument('--disable-translate')
+    options.add_argument('--no-sandbox')
 
     Selenium::WebDriver::Chrome.path = ENV.fetch('GOOGLE_CHROME_SHIM', nil) if ENV["GOOGLE_CHROME_SHIM"]
 
