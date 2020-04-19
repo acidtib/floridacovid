@@ -36,7 +36,7 @@
           <h4 class="my-0 font-weight-normal">Deaths</h4>
         </div>
         <div class="card-body">
-          <h1 class="card-title"><%= number_with_delimiter(@state_stats.deaths) %></h1>
+          <h1 class="card-title"><%= number_with_delimiter(@state_stats.deaths) %> <small style="display: block; font-size: 19px; text-align: end; color: red;">+<%= (@state_stats.deaths - @state_stats_yesterday.deaths) %> <span style="color: #212529;">24hrs</span></small></h1>
         </div>
       </div>
     </div>
@@ -52,7 +52,7 @@
   <div class="col-12 mb-3">
     <h1 class="text-center">Suggested Actions</h1>
   </div>
-  
+
   <div class="col-md-4">
     <h3>Determine Symptoms</h3>
     <p>If you have a fever, sore throat, or dry cough, you should self-quarantine and attempt to recover at home. If these symptoms persist for 2 or more days and do not improve, call your primary care provider. They will give you further instruction. If you are having trouble breathing, feel pressure in your chest, have bluish lips, or feel sudden confusion, visit a hospital.</p>
