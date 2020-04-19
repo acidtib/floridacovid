@@ -66,7 +66,7 @@ class FloridaWorker
 
           recovered = features["attributes"]["Recovered"]
 
-          state.state_stats.today.last.update(
+          state.state_stats.last.update(
             recovered: recovered
           )
         end
