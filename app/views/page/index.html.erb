@@ -30,34 +30,6 @@
           <h1 class="card-title"><%= number_with_delimiter(@state_stats.positive_non_residents) %> <small style="display: block; font-size: 19px; text-align: end; color: red;">+<%= (@state_stats.positive_non_residents - @state_stats_yesterday.positive_non_residents) %> <span style="color: #212529;">24hrs</span></small></h1>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="col-12 mb-4 mt-1">
-    <%= line_chart api_v1_charts_cases_path %>
-  </div>
-
-  <div class="col-12">
-    <h1>Health Monitoring</h1>
-
-    <div class="card-deck mb-3 mt-3 text-center">
-      <div class="card mb-4 shadow-sm">
-        <div class="card-header">
-          <h4 class="my-0 font-weight-normal">Hospitalized</h4>
-        </div>
-        <div class="card-body">
-          <h1 class="card-title"><%= number_with_delimiter(@state_stats.being_monitored) %></h1>
-        </div>
-      </div>
-
-      <div class="card mb-4 shadow-sm">
-        <div class="card-header">
-          <h4 class="my-0 font-weight-normal">Recovered</h4>
-        </div>
-        <div class="card-body">
-          <h1 class="card-title"><%= number_with_delimiter(@state_stats.recovered) %></h1>
-        </div>
-      </div>
 
       <div class="card mb-4 shadow-sm">
         <div class="card-header">
@@ -70,13 +42,17 @@
     </div>
   </div>
 
+  <div class="col-12 mb-4 mt-1">
+    <%= line_chart api_v1_charts_cases_path %>
+  </div>
+
   <div class="col-12">
     <h1>Test Results</h1>
 
     <div class="card-deck mb-3 mt-3 text-center">
       <div class="card mb-4 shadow-sm">
         <div class="card-header">
-          <h4 class="my-0 font-weight-normal">Total</h4>
+          <h4 class="my-0 font-weight-normal">Tested</h4>
         </div>
         <div class="card-body">
           <h1 class="card-title"><%= number_with_delimiter(@state_stats.results_total) %></h1>
@@ -92,10 +68,18 @@
         </div>
       </div>
 
-      <div class="card mb-4 stat-card not-here">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Hospitalized</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title"><%= number_with_delimiter(@state_stats.being_monitored) %></h1>
+        </div>
       </div>
     </div>
   </div>
+
+
 
   <div class="col-12">
     <h1>Cases by County</h1>
