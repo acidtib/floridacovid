@@ -123,7 +123,7 @@ class FloridaWorker
             slug = att["COUNTYNAME"].downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
             residents = att["C_FLRes"]
             non_residents = att["C_NotFLRes"]
-            deaths = att["FLResDeaths"]
+            deaths = att["Deaths"]
 
             county = state.counties.find_or_create_by(slug: slug) do |ct|
               ct.name = name
