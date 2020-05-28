@@ -1,0 +1,8 @@
+.env*
+.git
+.gitignore
+.dockerignore
+.byebug_history
+log/*
+tmp/*
+.DS_Store

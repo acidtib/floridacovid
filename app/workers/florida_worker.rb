@@ -4,23 +4,25 @@ class FloridaWorker
   def perform()
     url = "https://arcg.is/0nHO11"
 
+    driver_capabilities = Selenium::WebDriver::Remote::Capabilities.chrome()
+
     options = Selenium::WebDriver::Chrome::Options.new
     options.add_argument('--ignore-certificate-errors')
     options.add_argument('--disable-popup-blocking')
     options.add_argument('--disable-translate')
     options.add_argument('--no-sandbox')
 
-    Selenium::WebDriver::Chrome.path = ENV.fetch('GOOGLE_CHROME_SHIM', nil) if ENV["GOOGLE_CHROME_SHIM"]
-
     http_client = Selenium::WebDriver::Remote::Http::Default.new
     http_client.read_timeout = 120
+
+    driver = Selenium::WebDriver.for(:remote, :url => 'http://hub:4444/wd/hub', :desired_capabilities => driver_capabilities, options: options, http_client: http_client)
     
-    driver = Selenium::WebDriver.for :chrome, options: options, http_client: http_client
     driver.navigate.to(url)
 
     sleep(5)
     wait = Selenium::WebDriver::Wait.new(:timout => 500)
     wait.until { driver.find_element(:css, "div.dashboard-page") }
+
 
     if driver.title == "Florida COVID-19 Confirmed Cases"
       doc = Nokogiri::HTML(driver.page_source)
@@ -148,7 +150,7 @@ class FloridaWorker
           end
         end
       end
-
+      
       driver.quit
     else
       driver.quit
