@@ -22,6 +22,8 @@ services:
     environment:
       - HUB_PORT_4444_TCP_ADDR=hub
       - HUB_PORT_4444_TCP_PORT=4444
+    volumes:
+      - /dev/shm:/dev/shm
     ports:
       - 5900:5900
     depends_on:
@@ -58,6 +60,8 @@ services:
     environment:
       REDIS_URL: redis://redis:6379/0
       REDIS_SIDEKIQ: redis://redis:6379/1
+      SIDEKIQ_WEB_USERNAME: admin
+      SIDEKIQ_WEB_PASSWORD: password
     ports:
       - "3000:3000"
     volumes:
@@ -76,6 +80,8 @@ services:
     environment:
       REDIS_URL: redis://redis:6379/0
       REDIS_SIDEKIQ: redis://redis:6379/1
+      SIDEKIQ_WEB_USERNAME: admin
+      SIDEKIQ_WEB_PASSWORD: password
     depends_on:
       - redis
       - postgresql
