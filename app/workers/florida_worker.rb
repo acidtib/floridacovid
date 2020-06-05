@@ -24,17 +24,17 @@ class FloridaWorker
 
     if driver.title == "Florida COVID-19 Confirmed Cases"
       doc = Nokogiri::HTML(driver.page_source)
-      pp driver.page_source
+      pp doc
 
       sleep(5)
 
-      # florida_residents = doc.at('text:contains("Positive Residents")').parent.parent.parent.parent.next_element.css("g.responsive-text-label text").text.gsub(",", "").to_i
+      florida_residents = doc.at('text:contains("Positive Residents")').parent.parent.parent.parent.next_element.css("g.responsive-text-label text").text.gsub(",", "").to_i
       # non_residents = doc.at('text:contains("Positive Non-Residents")').parent.parent.parent.parent.next_element.css("g.responsive-text-label text").text.gsub(",", "").to_i
       # florida_deaths = doc.at('text:contains("Deaths")').parent.parent.parent.parent.next_element.css("g.responsive-text-label text").text.gsub(",", "").to_i
       # being_monitored = doc.at('text:contains("Hospitalizations")').parent.parent.parent.parent.next_element.css("g.responsive-text-label text").text.gsub(",", "").to_i
       # negative_tests = doc.at('text:contains("Negative")').parent.parent.parent.parent.next_element.css("g.responsive-text-label text").text.gsub(",", "").to_i
       # results_total = (florida_residents + non_residents + negative_tests)
-
+      pp florida_residents
       # state = State.find_by_slug("florida")
       # last_stat = state.state_stats.today
 
