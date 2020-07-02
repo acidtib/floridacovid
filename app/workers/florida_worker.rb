@@ -2,7 +2,7 @@ class FloridaWorker
   include Sidekiq::Worker
 
   def perform()
-    url = "https://fdoh.maps.arcgis.com/apps/opsdashboard/index.html#/74c7375b03894e68920c2d0131eef1e6"
+    url = "https://experience.arcgis.com/experience/96dd742462124fa0b38ddedb9b25e429"
 
     options = Selenium::WebDriver::Chrome::Options.new
     options.add_argument('--ignore-certificate-errors')
@@ -27,10 +27,10 @@ class FloridaWorker
 
       sleep(5)
 
-      florida_residents = doc.at('text:contains("Florida Residents")').parent.parent.parent.parent.next_element.css("g.responsive-text-label text").text.gsub(",", "").to_i
-      non_residents = doc.at('text:contains("Non-Florida Residents")').parent.parent.parent.parent.next_element.css("g.responsive-text-label text").text.gsub(",", "").to_i
+      florida_residents = doc.at('text:contains("Positive Residents")').parent.parent.parent.parent.next_element.css("g.responsive-text-label text").text.gsub(",", "").to_i
+      non_residents = doc.at('text:contains("Positive Non-Residents")').parent.parent.parent.parent.next_element.css("g.responsive-text-label text").text.gsub(",", "").to_i
       florida_deaths = doc.at('text:contains("Deaths")').parent.parent.parent.parent.next_element.css("g.responsive-text-label text").text.gsub(",", "").to_i
-      being_monitored = doc.at('text:contains("Hospitalized")').parent.parent.parent.parent.next_element.css("g.responsive-text-label text").text.gsub(",", "").to_i
+      being_monitored = doc.at('text:contains("Hospitalizations")').parent.parent.parent.parent.next_element.css("g.responsive-text-label text").text.gsub(",", "").to_i
       negative_tests = doc.at('text:contains("Negative")').parent.parent.parent.parent.next_element.css("g.responsive-text-label text").text.gsub(",", "").to_i
       results_total = (florida_residents + non_residents + negative_tests)
 
