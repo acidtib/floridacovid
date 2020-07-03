@@ -14,22 +14,22 @@ class Florida::CasesWorker
       response = JSON.parse(get_cases.body)
 
       unless response["error"]
-        read_cases(response, offset)
+        read_cases(response)
       end
     end
   end
 
-  def read_cases(payload, offset)
+  def read_cases(payload)
+    cases = payload["features"]
+
     if payload["exceededTransferLimit"]
-      cases = payload["features"]
-
+      # paginate
       new_offset = cases.last["attributes"]["ObjectId"]
-
+      request(new_offset)
+    else
       cases.each do |c|
         Florida::ReadCaseWorker.perform_in(5.seconds, c["attributes"])
       end
-
-      request(new_offset)
     end
   end
 
