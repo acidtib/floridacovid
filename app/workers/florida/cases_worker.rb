@@ -21,15 +21,15 @@ class Florida::CasesWorker
 
   def read_cases(payload)
     cases = payload["features"]
+    
+    cases.each do |c|
+      Florida::ReadCaseWorker.perform_in(5.seconds, c["attributes"])
+    end
 
     if payload["exceededTransferLimit"]
       # paginate
       new_offset = cases.last["attributes"]["ObjectId"]
       request(new_offset)
-    else
-      cases.each do |c|
-        Florida::ReadCaseWorker.perform_in(5.seconds, c["attributes"])
-      end
     end
   end
 
