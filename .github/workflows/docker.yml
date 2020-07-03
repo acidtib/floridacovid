@@ -29,14 +29,14 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
   
-#     - name: Deploy Webhook
-#       uses: fjogeleit/http-request-action@master
-#       with:
-#         url: ${{ secrets.PORTAINER_WEBHOOK }}
-#         method: 'POST'
+    - name: Deploy Webhook
+      uses: fjogeleit/http-request-action@master
+      with:
+        url: ${{ secrets.PORTAINER_WEBHOOK }}
+        method: 'POST'
 
-#     - name: Deploy Webhook Sidekiq
-#       uses: fjogeleit/http-request-action@master
-#       with:
-#         url: ${{ secrets.PORTAINER_WEBHOOK_SIDEKIQ }}
-#         method: 'POST'
+    - name: Deploy Webhook Sidekiq
+      uses: fjogeleit/http-request-action@master
+      with:
+        url: ${{ secrets.PORTAINER_WEBHOOK_SIDEKIQ }}
+        method: 'POST'
