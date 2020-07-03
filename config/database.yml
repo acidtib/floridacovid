@@ -25,7 +25,7 @@ development:
   <<: *default
   database: covid_development
   username: postgres
-  password: password
+  host: postgresql
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -61,7 +61,7 @@ test:
   <<: *default
   database: covid_test
   username: postgres
-  password: password
+  host: postgresql
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
