@@ -70,7 +70,6 @@ GEM
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
     chartkick (3.3.1)
-    childprocess (3.0.0)
     choice (0.2.0)
     chromedriver-helper (2.1.1)
       archive-zip (~> 0.10)
@@ -189,7 +188,6 @@ GEM
     ruby-graphviz (1.2.5)
       rexml
     ruby_dep (1.5.0)
-    rubyzip (2.3.0)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -209,9 +207,6 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    selenium-webdriver (3.142.7)
-      childprocess (>= 0.5, < 4.0)
-      rubyzip (>= 1.2.2)
     sidekiq (6.0.5)
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
@@ -278,7 +273,6 @@ DEPENDENCIES
   rails-erd
   redis (~> 4.0)
   sass-rails (~> 5.0)
-  selenium-webdriver
   sidekiq
   sidekiq-cron
   spring
@@ -289,7 +283,7 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 RUBY VERSION
-   ruby 2.6.5p114
+   ruby 2.6.6p146
 
 BUNDLED WITH
    2.1.4

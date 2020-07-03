@@ -19,10 +19,6 @@ class CountriesWorker
 
         last_stat = get_country.country_stats.today
 
-        confirmed = "abc".empty?
-        recovered = "abc".empty?
-        deaths = "abc".empty?
-
         confirmed = att["Confirmed"]
         confirmed = 0 if confirmed.to_s.empty?
         recovered = att["Recovered"]
