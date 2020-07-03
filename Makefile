@@ -1,8 +1,12 @@
 run:
-	foreman start -f Procfile.dev
+	# foreman start -f Procfile.dev
+	docker-compose up --build
 
-erd:
-	bundle exec erd
+docker.build:
+	docker build -t florida-covid/app_service:latest .
 
-db.reset:
-	rails db:drop && rails db:create && rails db:migrate && rails db:seed
+docker.tag:
+	docker tag florida-covid/app_service:latest hub.ergot.space/florida-covid/app_service:latest
+
+docker.push:
+	docker image push hub.ergot.space/florida-covid/app_service:latest
