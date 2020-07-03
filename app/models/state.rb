@@ -3,6 +3,7 @@ class State < ApplicationRecord
   has_many :state_stats
   has_many :age_stats
   has_many :counties
+  has_many :cases
 end
 
 # == Schema Information

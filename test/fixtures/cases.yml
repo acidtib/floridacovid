@@ -1,0 +1,75 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  object_id: 1
+  county: one
+  state: one
+  age: MyString
+  age_group: MyString
+  gender: MyString
+  jurisdiction: MyString
+  travel_related: MyString
+  origin: MyString
+  ed_visit: MyString
+  hospitalized: MyString
+  died: MyString
+  case_: MyString
+  contact: MyString
+  case_date: 2020-07-02 22:52:02
+  event_date: 2020-07-02 22:52:02
+  chart_date: 2020-07-02 22:52:02
+
+two:
+  object_id: 1
+  county: two
+  state: two
+  age: MyString
+  age_group: MyString
+  gender: MyString
+  jurisdiction: MyString
+  travel_related: MyString
+  origin: MyString
+  ed_visit: MyString
+  hospitalized: MyString
+  died: MyString
+  case_: MyString
+  contact: MyString
+  case_date: 2020-07-02 22:52:02
+  event_date: 2020-07-02 22:52:02
+  chart_date: 2020-07-02 22:52:02
+
+# == Schema Information
+#
+# Table name: cases
+#
+#  id             :bigint           not null, primary key
+#  age            :string
+#  age_group      :string
+#  case_          :string
+#  case_date      :datetime
+#  chart_date     :datetime
+#  contact        :string
+#  died           :string
+#  ed_visit       :string
+#  event_date     :datetime
+#  gender         :string
+#  hospitalized   :string
+#  jurisdiction   :string
+#  origin         :string
+#  travel_related :string
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  county_id      :bigint
+#  object_id      :integer
+#  state_id       :bigint
+#
+# Indexes
+#
+#  index_cases_on_county_id  (county_id)
+#  index_cases_on_state_id   (state_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (county_id => counties.id)
+#  fk_rails_...  (state_id => states.id)
+#

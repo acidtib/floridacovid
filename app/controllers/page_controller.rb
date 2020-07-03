@@ -20,9 +20,11 @@ class PageController < ApplicationController
     @countries.each do |co|
       stat = co.country_stats.last
 
-      @earth_confirmed += stat.confirmed
-      @earth_recovered += stat.recovered
-      @earth_deaths += stat.deaths
+      if stat
+        @earth_confirmed += stat.confirmed
+        @earth_recovered += stat.recovered
+        @earth_deaths += stat.deaths
+      end
     end
 
     @counties = County.includes(:county_stats).order("county_stats.residents desc").limit(5)

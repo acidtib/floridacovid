@@ -10,29 +10,8 @@ networks:
   internal:
 
 services:
-  hub:
-    image: selenium/hub:latest
-    expose:
-      - 4444
-    networks:
-      - internal
-
-  chrome:
-    image: selenium/node-chrome:latest
-    environment:
-      - HUB_PORT_4444_TCP_ADDR=hub
-      - HUB_PORT_4444_TCP_PORT=4444
-    volumes:
-      - /dev/shm:/dev/shm
-    ports:
-      - 5900:5900
-    depends_on:
-      - hub
-    networks:
-      - internal
-
   redis:
-    image: redis:latest
+    image: redis
     command: redis-server
     ports: 
       - 6379:6379
@@ -40,15 +19,15 @@ services:
       - redis-data:/data
     networks:
       - internal
-  
+
   postgresql:
     image: postgres:10
     ports:
       - "5432:5432"
+    environment: 
+      - POSTGRES_HOST_AUTH_METHOD=trust
     volumes:
       - postgres-data:/var/lib/postgresql/data
-    environment:
-      POSTGRES_HOST_AUTH_METHOD: trust
     networks:
       - internal
   
@@ -57,32 +36,29 @@ services:
       context: .
       dockerfile: Dockerfile
     command: bundle exec puma -C config/puma.rb
-    environment:
-      REDIS_URL: redis://redis:6379/0
-      REDIS_SIDEKIQ: redis://redis:6379/1
-      SIDEKIQ_WEB_USERNAME: admin
-      SIDEKIQ_WEB_PASSWORD: password
     ports:
       - "3000:3000"
     volumes:
       - .:/usr/src/app
+    env_file:
+      - .env
     depends_on:
       - redis
       - postgresql
     networks:
       - internal
-  
+
   sidekiq:
     build:
       context: .
       dockerfile: Dockerfile
-    command: bundle exec sidekiq -q default -C config/sidekiq.yml
+    command: bundle exec sidekiq -q default -c 5
+    env_file:
+      - .env
     environment:
-      REDIS_URL: redis://redis:6379/0
-      REDIS_SIDEKIQ: redis://redis:6379/1
-      SIDEKIQ_WEB_USERNAME: admin
-      SIDEKIQ_WEB_PASSWORD: password
+      - ENABLE_BOOTSNAP=false
     depends_on:
+      - app
       - redis
       - postgresql
     volumes:
