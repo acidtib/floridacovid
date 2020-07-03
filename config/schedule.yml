@@ -12,3 +12,8 @@ florida:
   cron: "0 * * * *"
   class: "FloridaWorker"
   queue: default
+
+florida_cases:
+  cron: "30 0-22/1 * * *"
+  class: "Florida::CasesWorker"
+  queue: default

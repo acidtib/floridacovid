@@ -19,17 +19,24 @@ class CountriesWorker
 
         last_stat = get_country.country_stats.today
 
+        confirmed = att["Confirmed"]
+        confirmed = 0 if confirmed.to_s.empty?
+        recovered = att["Recovered"]
+        recovered = 0 if recovered.to_s.empty?
+        deaths = att["Deaths"]
+        deaths = 0 if deaths.to_s.empty?
+
         if last_stat.count == 0
           get_country.country_stats.create(
-            confirmed: att["Confirmed"],
-            recovered: att["Recovered"],
-            deaths: att["Deaths"]
+            confirmed: confirmed,
+            recovered: recovered,
+            deaths: deaths
           )
         else
           last_stat.last.update(
-            confirmed: att["Confirmed"],
-            recovered: att["Recovered"],
-            deaths: att["Deaths"]
+            confirmed: confirmed,
+            recovered: recovered,
+            deaths: deaths
           )
         end
       end

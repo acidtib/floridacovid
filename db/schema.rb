@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_06_021340) do
+ActiveRecord::Schema.define(version: 2020_07_03_025202) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,30 @@ ActiveRecord::Schema.define(version: 2020_04_06_021340) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["state_id"], name: "index_age_stats_on_state_id"
+  end
+
+  create_table "cases", force: :cascade do |t|
+    t.integer "object_id"
+    t.bigint "county_id"
+    t.bigint "state_id"
+    t.string "age"
+    t.string "age_group"
+    t.string "gender"
+    t.string "jurisdiction"
+    t.string "travel_related"
+    t.string "origin"
+    t.string "ed_visit"
+    t.string "hospitalized"
+    t.string "died"
+    t.string "case_"
+    t.string "contact"
+    t.datetime "case_date"
+    t.datetime "event_date"
+    t.datetime "chart_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["county_id"], name: "index_cases_on_county_id"
+    t.index ["state_id"], name: "index_cases_on_state_id"
   end
 
   create_table "counties", force: :cascade do |t|
@@ -98,6 +122,8 @@ ActiveRecord::Schema.define(version: 2020_04_06_021340) do
   end
 
   add_foreign_key "age_stats", "states"
+  add_foreign_key "cases", "counties"
+  add_foreign_key "cases", "states"
   add_foreign_key "counties", "states"
   add_foreign_key "country_stats", "countries"
   add_foreign_key "county_stats", "counties"

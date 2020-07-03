@@ -1,6 +1,7 @@
 class Country < ApplicationRecord
   has_many :country_stats
   has_many :states
+  has_many :cases
 end
 
 # == Schema Information
