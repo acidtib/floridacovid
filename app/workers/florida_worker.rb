@@ -4,7 +4,9 @@ class FloridaWorker
   def perform()
     cases = Case.all
     
-    florida_residents = cases.where(jurisdiction: "FL resident").count
+    residents = cases.where(jurisdiction: "FL resident").count
+    isolated = cases.where(jurisdiction: "Not diagnosed/isolated in FL").count
+    florida_residents = (residents + isolated)
     non_residents = cases.where(jurisdiction: "Non-FL resident").count
     florida_deaths = cases.where(died: "Yes").count
     being_monitored = cases.where(hospitalized: "YES").count

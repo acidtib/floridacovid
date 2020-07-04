@@ -27,11 +27,11 @@ class PageController < ApplicationController
       end
     end
 
-    @counties = County.includes(:county_stats).order("county_stats.residents desc").limit(5)
+    @counties = County.includes(:county_stats).where.not(slug: "unknown").order("county_stats.residents desc").limit(5)
   end
 
   def counties
-    @counties = County.includes(:county_stats).order("county_stats.residents desc").all
+    @counties = County.includes(:county_stats).where.not(slug: "unknown").order("county_stats.residents desc")
   end
 
   def states

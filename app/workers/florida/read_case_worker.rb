@@ -7,6 +7,8 @@ class Florida::ReadCaseWorker
     county_name = payload["County"].capitalize
     slug = payload["County"].downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
 
+    slug = "miami-dade" if slug == "dade"
+
     county = state.counties.find_or_create_by!(slug: slug) do |ct|
       ct.name = county_name
     end
