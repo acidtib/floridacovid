@@ -4,10 +4,14 @@ class Florida::ReadCaseWorker
   def perform(payload)
     state = State.find_by_slug("florida")
 
-    county_name = payload["County"].downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
-    county = state.counties.find_by_slug(county_name)
+    county_name = payload["County"].capitalize
+    slug = payload["County"].downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
 
-    Case.find_or_create_by(object_id: payload["ObjectId"]) do |c|
+    county = state.counties.find_or_create_by!(slug: slug) do |ct|
+      ct.name = county_name
+    end
+
+    Case.find_or_create_by!(object_id: payload["ObjectId"]) do |c|
       c.county = county
       c.state = state
       c.age = payload["Age"]
