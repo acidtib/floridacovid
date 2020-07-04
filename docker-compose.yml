@@ -2,9 +2,7 @@ version: '3.3'
 
 volumes:
   redis-data:
-    driver: local
   postgres-data:
-    driver: local
 
 networks:
   internal:
@@ -52,7 +50,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: bundle exec sidekiq -q default -c 5
+    command: bundle exec sidekiq -q default -c 10
     env_file:
       - .env
     environment:
