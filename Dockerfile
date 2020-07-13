@@ -14,6 +14,8 @@ RUN gem install bundler -v $BUNDLER_VERSION
 ADD Gemfile $APP_HOME/
 ADD Gemfile.lock $APP_HOME/
 
+RUN bundle config --local build.sassc --disable-march-tune-native
+
 RUN bundle install
 
 ADD . $APP_HOME
