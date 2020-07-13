@@ -1,9 +1,11 @@
 class Florida::CasesWorker
   include Sidekiq::Worker
 
-  def perform()
-    state = State.find_by_slug("florida")
-    offset = (state.cases.last.object_id - 500)
+  def perform(offset = 0)
+    if offset == 0
+      state = State.find_by_slug("florida")
+      offset = (state.cases.last.object_id - 500)
+    end
 
     get_cases = HTTParty.get("https://services1.arcgis.com/CY1LXxl9zlJeBuRZ/arcgis/rest/services/Florida_COVID19_Case_Line_Data_NEW/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json&resultOffset=#{offset}&resultRecordCount=2000", { read_timeout: 120 })
     
