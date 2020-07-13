@@ -10,7 +10,7 @@ class PageController < ApplicationController
     end
     @ages = @state.age_stats.last
 
-    @countries = Country.includes(:country_stats).all
+    @countries = Country.includes(:country_stats).order("country_stats.confirmed desc").all
     @co_stats = @countries.find_by_slug("us").country_stats.last
 
     @earth_confirmed = 0
@@ -18,7 +18,7 @@ class PageController < ApplicationController
     @earth_deaths = 0
   
     @countries.each do |co|
-      stat = co.country_stats.last
+      stat = co.country_stats.today.last
 
       if stat
         @earth_confirmed += stat.confirmed
