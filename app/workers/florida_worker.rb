@@ -8,7 +8,7 @@ class FloridaWorker
     isolated = cases.where(jurisdiction: "Not diagnosed/isolated in FL").count
     florida_residents = (residents + isolated)
     non_residents = cases.where(jurisdiction: "Non-FL resident").count
-    florida_deaths = cases.where(died: "Yes").count
+    florida_deaths = cases.where(jurisdiction: "FL resident", died: "Yes").count
     being_monitored = cases.where(hospitalized: "YES").count
     results_total = (florida_residents + non_residents)
 
