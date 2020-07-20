@@ -1,12 +1,16 @@
 run:
-	# foreman start -f Procfile.dev
 	docker-compose up --build
 
 docker.build:
 	docker build -t florida-covid/app_service:latest .
 
-docker.tag:
-	docker tag florida-covid/app_service:latest hub.ergot.space/florida-covid/app_service:latest
+db.setup: db.create db.migrate
 
-docker.push:
-	docker image push hub.ergot.space/florida-covid/app_service:latest
+db.create:
+	docker-compose run app rake db:create
+
+db.migrate:
+	docker-compose run app rake db:migrate
+
+db.drop:
+	docker-compose run app rake db:drop
