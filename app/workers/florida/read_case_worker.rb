@@ -16,7 +16,7 @@ class Florida::ReadCaseWorker
     find_case = Case.find_by_object_id(payload["ObjectId"])
 
     if find_case
-      Case.update(
+      find_case.update(
         case_: payload["Case_"],
         contact: payload["Contact"],
         died: payload["Died"],
