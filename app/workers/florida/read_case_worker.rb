@@ -28,6 +28,7 @@ class Florida::ReadCaseWorker
       )
     else
       Case.create!(
+        object_id: payload["ObjectId"],
         county: county,
         state: state,
         age: payload["Age"],

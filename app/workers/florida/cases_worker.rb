@@ -1,8 +1,8 @@
 class Florida::CasesWorker
   include Sidekiq::Worker
 
-  def perform(offset = 00)
-    if offset == 00
+  def perform(offset = "last")
+    if offset == "last"
       state = State.find_by_slug("florida")
       offset = (state.cases.order("object_id DESC").first.object_id - 1000)
     end
@@ -16,7 +16,7 @@ class Florida::CasesWorker
         cases = response["features"]
     
         cases.each do |c|
-          Florida::ReadCaseWorker.perform_in(30.seconds, c["attributes"])
+          Florida::ReadCaseWorker.perform_in(55.seconds, c["attributes"])
         end
 
         if response["exceededTransferLimit"]
