@@ -13,24 +13,40 @@ class Florida::ReadCaseWorker
       ct.name = county_name
     end
 
-    Case.find_or_create_by!(object_id: payload["ObjectId"]) do |c|
-      c.county = county
-      c.state = state
-      c.age = payload["Age"]
-      c.age_group = payload["Age_group"]
-      c.case_ = payload["Case_"]
-      c.contact = payload["Contact"]
-      c.died = payload["Died"]
-      c.ed_visit = payload["EDvisit"]
-      c.gender = payload["Gender"]
-      c.hospitalized = payload["Hospitalized"]
-      c.jurisdiction = payload["Jurisdiction"]
-      c.origin = payload["Origin"]
-      c.travel_related = payload["Travel_related"]
-      c.event_date = DateTime.strptime(payload["EventDate"].to_s,'%Q')
-      c.case_date = DateTime.strptime(payload["Case1"].to_s,'%Q')
-      c.chart_date = DateTime.strptime(payload["ChartDate"].to_s,'%Q')
+    find_case = Case.find_by_object_id(payload["ObjectId"])
+
+    if find_case
+      Case.update(
+        case_: payload["Case_"],
+        contact: payload["Contact"],
+        died: payload["Died"],
+        ed_visit: payload["EDvisit"],
+        hospitalized: payload["Hospitalized"],
+        origin: payload["Origin"],
+        travel_related: payload["Travel_related"],
+        jurisdiction: payload["Jurisdiction"]
+      )
+    else
+      Case.create!(
+        county: county,
+        state: state,
+        age: payload["Age"],
+        age_group: payload["Age_group"],
+        case_: payload["Case_"],
+        contact: payload["Contact"],
+        died: payload["Died"],
+        ed_visit: payload["EDvisit"],
+        gender: payload["Gender"],
+        hospitalized: payload["Hospitalized"],
+        jurisdiction: payload["Jurisdiction"],
+        origin: payload["Origin"],
+        travel_related: payload["Travel_related"],
+        event_date: DateTime.strptime(payload["EventDate"].to_s,'%Q'),
+        case_date: DateTime.strptime(payload["Case1"].to_s,'%Q'),
+        chart_date: DateTime.strptime(payload["ChartDate"].to_s,'%Q')
+      )
     end
+
   end
 
 end
