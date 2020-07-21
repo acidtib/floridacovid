@@ -1,7 +1,9 @@
 class Florida::CasesWorker
   include Sidekiq::Worker
 
-  def perform(offset = "last")
+  def perform(*args)
+    offset = args[0]["offset"]
+
     if offset == "last"
       state = State.find_by_slug("florida")
       offset = (state.cases.order("object_id DESC").first.object_id - 1000)
@@ -21,7 +23,7 @@ class Florida::CasesWorker
 
         if response["exceededTransferLimit"]
           # paginate
-          new_offset = cases.last["attributes"]["ObjectId"]
+          new_offset = {"offset": cases.last["attributes"]["ObjectId"]}
           
           Florida::CasesWorker.perform_async(new_offset)
         end
