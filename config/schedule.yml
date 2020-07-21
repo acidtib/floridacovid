@@ -17,3 +17,12 @@ florida_cases:
   cron: "30 0-22/1 * * *"
   class: "Florida::CasesWorker"
   queue: default
+  args:
+    offset: "last"
+
+rescan_florida_cases:
+  cron: "30 0-22/1 * * *"
+  class: "Florida::CasesWorker"
+  queue: default
+  args:
+    offset: 0
